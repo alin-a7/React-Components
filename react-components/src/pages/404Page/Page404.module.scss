@@ -1,0 +1,44 @@
+.wrapper {
+  align-items: center;
+  // background-image: url('../../assets/images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+  color: var(--gray-color);
+  font: var(--font-h1);
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.text {
+  color: var(--gray-color);
+  font: var(--font-text-3);
+  text-align: center;
+  text-decoration: underline;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+@media (max-width: 620px) {
+  .title {
+    font: var(--font-text-2);
+    font-weight: 700;
+  }
+
+  .text {
+    font: var(--font-text-5);
+    padding: 0 5px;
+  }
+}
