@@ -9,7 +9,7 @@
 .logo {
   width: 60px;
   height: 60px;
-  background-color: antiquewhite;
+  background-color: white;
   border-radius: 50%;
 
   &:hover {
@@ -19,7 +19,7 @@
 
 .menuItem {
   align-items: center;
-  color: var(--gray-color);
+  color: white;
   display: flex;
   font: var(--font-text-4);
   font-weight: 700;

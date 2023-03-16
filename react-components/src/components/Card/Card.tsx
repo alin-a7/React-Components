@@ -1,10 +1,8 @@
 import React, { FC, ReactNode } from 'react'
 
-import Menu from '../Menu'
+import styles from './Card.module.scss'
 
-import styles from './Layout.module.scss'
-
-interface Product {
+export interface Product {
   category: string
   description: string
   id: number
@@ -18,7 +16,20 @@ class Card extends React.Component<Product> {
   render() {
     return (
       <div className={styles.card}>
-        <div className={styles.childrenBlock}>{this.props.title}</div>
+        <img
+          src={this.props.image}
+          alt={this.props.title}
+          className={styles.image}
+        />
+        <div className={styles.title}>{this.props.title}</div>
+        <div className={styles.description}>{this.props.description}</div>
+        <div className={styles.cardFooter}>
+          <div className={styles.rating}>
+            <div>Rate: {this.props.rating.rate}</div>
+            <div>Count: {this.props.rating.count}</div>
+          </div>
+          <div className={styles.price}>{this.props.rating.count}$</div>
+        </div>
       </div>
     )
   }

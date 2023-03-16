@@ -1,7 +1,11 @@
 import React, { FC } from 'react'
+
+import Card from '../../components/Card'
 import Layout from '../../components/Layout'
 
-import styles from './AboutPage.module.scss'
+import { Product } from '../../components/Card/Card'
+
+import styles from './CardsPage.module.scss'
 
 class CardsPage extends React.Component<any, any> {
   constructor(props: any) {
@@ -41,14 +45,11 @@ class CardsPage extends React.Component<any, any> {
     } else {
       return (
         <Layout>
-          <ul>
-            {items.map((item: any) => (
-              <li key={item.id}>
-                <img src={item.image} alt={item.title} />
-                {item.price}
-              </li>
+          <div className={styles.cardWrapper}>
+            {items.map((item: Product) => (
+              <Card key={item.id} {...item} />
             ))}
-          </ul>
+          </div>
         </Layout>
       )
     }
