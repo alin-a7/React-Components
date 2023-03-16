@@ -21,15 +21,9 @@
   align-items: center;
   color: white;
   display: flex;
-  font: var(--font-text-4);
+  font-size: 20px;
   font-weight: 700;
   gap: 10px;
   padding: 10px;
   text-transform: capitalize;
-}
-
-@media (max-width: 768px) {
-  .container {
-    display: none;
-  }
 }

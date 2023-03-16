@@ -4,7 +4,7 @@ import styles from './InputSearch.module.scss'
 
 interface Search {
   onChange: ChangeEventHandler<HTMLInputElement>
-  value?: string
+  value?: string 
 }
 
 class InputSearch extends React.Component<Search> {
