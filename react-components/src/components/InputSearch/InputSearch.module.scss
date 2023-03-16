@@ -1,0 +1,43 @@
+.searchInput {
+  background-color: transparent;
+  opacity: 0.8;
+
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  font: var(--font-text-4);
+
+  padding: 0 15px 0 30px;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  &:focus {
+    border: 2px solid white;
+    opacity: 1;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:focus-visible {
+    outline: transparent !important;
+  }
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.searchIcon {
+  opacity: 0.8;
+  left: 7px;
+  top: 10px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
