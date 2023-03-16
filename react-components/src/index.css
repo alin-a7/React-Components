@@ -15,7 +15,6 @@
 }
 * {
   box-sizing: border-box;
-  font-family: var(--font-family-roboto);
   margin: 0;
   padding: 0;
 }

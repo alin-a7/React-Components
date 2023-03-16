@@ -1,9 +1,16 @@
 .container {
   display: flex;
-  gap: 20px;
-  padding: 10px 25px;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding: 10px 25px;
+
   background-color: rgb(23, 14, 36);
+}
+
+.navigation {
+  display: flex;
+  gap: 20px;
 }
 
 .logo {

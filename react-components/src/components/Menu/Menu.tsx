@@ -9,21 +9,26 @@ import styles from './Menu.module.scss'
 
 class Menu extends React.Component {
   render() {
+    const currentPage = window.location.pathname.slice(1)
+    
     return (
-      <nav className={styles.container}>
-        <NavLink to={PATHS.CARDS}>
-          <img
-            src="../../src/assets/logo.svg"
-            alt="logo"
-            className={styles.logo}
-          />
-        </NavLink>
-        {NAVIGATION_MENU.map(({ to, label }, index) => (
-          <NavLink key={index} to={to} className={styles.menuItem}>
-            {label}
+      <div className={styles.container}>
+        <nav className={styles.navigation}>
+          <NavLink to={PATHS.CARDS}>
+            <img
+              src="../../src/assets/logo.svg"
+              alt="logo"
+              className={styles.logo}
+            />
           </NavLink>
-        ))}
-      </nav>
+          {NAVIGATION_MENU.map(({ to, label }, index) => (
+            <NavLink key={index} to={to} className={styles.menuItem}>
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+        <div>Current page: {currentPage}</div>
+      </div>
     )
   }
 }

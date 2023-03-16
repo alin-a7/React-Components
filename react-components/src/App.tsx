@@ -1,10 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-
-import { Router } from './router/router'
+import Router from "./router"
 
 function App() {
-
   return (
     <Router/>
   )
