@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 
 import Menu from '../Menu'
 
@@ -8,14 +8,15 @@ type LayotProps = {
   children: ReactNode
 }
 
-const Layout: FC<LayotProps> = (props) => {
-
-  return (
-    <div className={styles.layout}>
+class Layout extends React.Component<LayotProps> {
+  render() {
+    return (
+      <div className={styles.layout}>
         <Menu />
-        <div className={styles.childrenBlock}>{props.children}</div>
-    </div>
-  )
+        <div className={styles.childrenBlock}>{this.props.children}</div>
+      </div>
+    )
+  }
 }
 
 export default Layout

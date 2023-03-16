@@ -1,6 +1,5 @@
 .wrapper {
   align-items: center;
-  // background-image: url('../../assets/images/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -12,23 +11,18 @@
 }
 
 .title {
-  color: var(--gray-color);
-  font: var(--font-h1);
+  font-size: 64px;
+  font-weight: 600;
   text-align: center;
   transition: all 0.5s ease-in-out;
 }
 
 .text {
-  color: var(--gray-color);
-  font: var(--font-text-3);
+  font-size: 18px;
+  font-weight: 400;
   text-align: center;
   text-decoration: underline;
   transition: all 0.5s ease-in-out;
-
-  &:hover {
-    cursor: pointer;
-    scale: 1.1;
-  }
 }
 
 @media (max-width: 620px) {

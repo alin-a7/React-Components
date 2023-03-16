@@ -1,15 +1,16 @@
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
-import Layout from "../../components/Layout";
+import React from 'react'
+import Layout from '../../components/Layout'
 
-import styles from "./AboutPage.module.scss";
+import styles from './AboutPage.module.scss'
 
-const AboutPage: FC = () => {
-  return (
-    <Layout>
-      <div>About</div>
-    </Layout>
-  );
-};
+class AboutPage extends React.Component {
+  render() {
+    return (
+      <Layout>
+        <div>About</div>
+      </Layout>
+    )
+  }
+}
 
-export default AboutPage;
+export default AboutPage
