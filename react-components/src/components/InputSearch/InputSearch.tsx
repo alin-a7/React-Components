@@ -4,6 +4,7 @@ import styles from './InputSearch.module.scss'
 
 interface Search {
   onChange: ChangeEventHandler<HTMLInputElement>
+  value?: string
 }
 
 class InputSearch extends React.Component<Search> {
@@ -16,6 +17,7 @@ class InputSearch extends React.Component<Search> {
           className={styles.searchInput}
           placeholder="Search products!"
           onChange={this.props.onChange}
+          value={this.props.value}
         />
       </div>
     )

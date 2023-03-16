@@ -15,7 +15,9 @@ class CardsPage extends React.Component<any, any> {
       error: null,
       isLoaded: false,
       items: [],
-      searchValue: '',
+      searchValue: localStorage.getItem('searchValue')
+        ? localStorage.getItem('searchValue')
+        : '',
     }
   }
 
@@ -39,9 +41,11 @@ class CardsPage extends React.Component<any, any> {
   }
 
   search(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value.trim().toLocaleLowerCase()
     this.setState({
-      searchValue: e.target.value.trim().toLocaleLowerCase(),
+      searchValue: value,
     })
+    localStorage.setItem('searchValue', value)
   }
 
   render(): React.ReactNode {
@@ -53,7 +57,7 @@ class CardsPage extends React.Component<any, any> {
     } else {
       return (
         <Layout>
-          <InputSearch onChange={(e) => this.search(e)} />
+          <InputSearch value={searchValue} onChange={(e) => this.search(e)} />
           <div className={styles.cardWrapper}>
             {items
               .filter((item: Product) =>
