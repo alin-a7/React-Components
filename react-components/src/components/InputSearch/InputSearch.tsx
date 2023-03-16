@@ -1,4 +1,4 @@
-import React, { FC, ChangeEventHandler } from 'react'
+import React, { ChangeEventHandler } from 'react'
 
 import styles from './InputSearch.module.scss'
 

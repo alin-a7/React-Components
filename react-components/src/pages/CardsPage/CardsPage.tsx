@@ -15,7 +15,7 @@ interface CardsPageProps {
   searchValue: string | null
 }
 
-class CardsPage extends React.Component<{}, CardsPageProps> {
+class CardsPage extends React.Component<object, CardsPageProps> {
   constructor(props: CardsPageProps) {
     super(props)
     this.state = {
@@ -64,11 +64,11 @@ class CardsPage extends React.Component<{}, CardsPageProps> {
     } else {
       return (
         <Layout>
-          <InputSearch value={searchValue!} onChange={(e) => this.search(e)} />
+          <InputSearch value={searchValue || ''} onChange={(e) => this.search(e)} />
           <div className={styles.cardWrapper}>
             {items
               .filter((item: Product) =>
-                item.title.toLocaleLowerCase().includes(searchValue!),
+                item.title.toLocaleLowerCase().includes(searchValue || ''),
               )
               .map((item: Product) => (
                 <Card key={item.id} {...item} />
