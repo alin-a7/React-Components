@@ -64,7 +64,10 @@ class CardsPage extends React.Component<object, CardsPageProps> {
     } else {
       return (
         <Layout>
-          <InputSearch value={searchValue || ''} onChange={(e) => this.search(e)} />
+          <InputSearch
+            value={searchValue || ''}
+            onChange={(e) => this.search(e)}
+          />
           <div className={styles.cardWrapper}>
             {items
               .filter((item: Product) =>
