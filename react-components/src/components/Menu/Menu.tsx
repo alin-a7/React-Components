@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { PATHS } from '../../router/paths'
@@ -7,7 +7,7 @@ import { NAVIGATION_MENU } from './constants'
 
 import styles from './Menu.module.scss'
 
-class Menu extends React.Component {
+class Menu extends Component {
   render() {
     const currentPage = window.location.pathname.slice(1)
     

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, Component } from 'react'
 
 import Card from '../../components/Card'
 import Layout from '../../components/Layout'
@@ -15,7 +15,7 @@ interface CardsPageProps {
   searchValue: string | null
 }
 
-class CardsPage extends React.Component<object, CardsPageProps> {
+class CardsPage extends Component<object, CardsPageProps> {
   constructor(props: CardsPageProps) {
     super(props)
     this.state = {
@@ -35,7 +35,7 @@ class CardsPage extends React.Component<object, CardsPageProps> {
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result,
+            items: result as Product[],
           })
         },
         (error) => {

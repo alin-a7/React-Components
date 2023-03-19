@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react'
+import { ChangeEventHandler, Component } from 'react'
 
 import styles from './InputSearch.module.scss'
 
@@ -7,7 +7,7 @@ interface Search {
   value?: string 
 }
 
-class InputSearch extends React.Component<Search> {
+class InputSearch extends Component<Search> {
   render() {
     return (
       <div className={styles.wrapper}>

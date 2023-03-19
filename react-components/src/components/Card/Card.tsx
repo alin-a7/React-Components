@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 import styles from './Card.module.scss'
 
@@ -12,7 +12,7 @@ export interface Product {
   title: string
 }
 
-class Card extends React.Component<Product> {
+class Card extends Component<Product> {
   render() {
     return (
       <div className={styles.card}>

@@ -1,9 +1,9 @@
-import React from 'react'
+import { Component } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { routes } from './routes'
 
-class Router extends React.Component {
+class Router extends Component {
   render() {
     return (
       <BrowserRouter>

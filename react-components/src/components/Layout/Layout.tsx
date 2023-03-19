@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { Component, ReactNode } from 'react'
 
 import Menu from '../Menu'
 
@@ -8,7 +8,7 @@ type LayotProps = {
   children: ReactNode
 }
 
-class Layout extends React.Component<LayotProps> {
+class Layout extends Component<LayotProps> {
   render() {
     return (
       <div className={styles.layout}>
