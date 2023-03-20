@@ -6,6 +6,10 @@ export const NAVIGATION_MENU = [
     label: 'Cards',
   },
   {
+    to: PATHS.FORMS,
+    label: 'Forms',
+  },
+  {
     to: PATHS.ABOUT,
     label: 'About',
   },
