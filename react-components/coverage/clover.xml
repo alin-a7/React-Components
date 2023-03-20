@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679319483819" clover="3.2.0">
-  <project timestamp="1679319483820" name="All files">
-    <metrics statements="603" coveredstatements="401" conditionals="14" coveredconditionals="5" methods="25" coveredmethods="5" elements="642" coveredelements="411" complexity="0" loc="603" ncloc="603" packages="10" files="22" classes="22"/>
+<coverage generated="1679321590607" clover="3.2.0">
+  <project timestamp="1679321590607" name="All files">
+    <metrics statements="603" coveredstatements="466" conditionals="20" coveredconditionals="15" methods="25" coveredmethods="14" elements="648" coveredelements="495" complexity="0" loc="603" ncloc="603" packages="10" files="22" classes="22"/>
     <package name="src">
       <metrics statements="21" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="App.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\App.tsx">
@@ -118,9 +118,9 @@
       </file>
     </package>
     <package name="src.components.Layout">
-      <metrics statements="23" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Layout.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\components\Layout\Layout.tsx">
-        <metrics statements="22" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="22" coveredstatements="22" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -132,27 +132,27 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="C:\Users\Alena\Desktop\React-Components\react-components\src\components\Layout\index.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
     </package>
     <package name="src.components.Menu">
-      <metrics statements="48" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="48" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
       <file name="Menu.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\components\Menu\Menu.tsx">
-        <metrics statements="35" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="35" coveredstatements="35" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -163,34 +163,34 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
       </file>
       <file name="constants.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\components\Menu\constants.tsx">
-        <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -202,11 +202,11 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
       <file name="index.ts" path="C:\Users\Alena\Desktop\React-Components\react-components\src\components\Menu\index.ts">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
     </package>
     <package name="src.constants">
@@ -489,56 +489,56 @@
       </file>
     </package>
     <package name="src.pages.404Page">
-      <metrics statements="20" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Page404.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\pages\404Page\Page404.tsx">
-        <metrics statements="19" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <metrics statements="19" coveredstatements="19" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="C:\Users\Alena\Desktop\React-Components\react-components\src\pages\404Page\index.ts">
-        <metrics statements="1" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
     </package>
     <package name="src.pages.AboutPage">
-      <metrics statements="15" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="AboutPage.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\pages\AboutPage\AboutPage.tsx">
-        <metrics statements="14" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="C:\Users\Alena\Desktop\React-Components\react-components\src\pages\AboutPage\index.ts">
-        <metrics statements="1" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
     </package>
     <package name="src.pages.CardsPage">
@@ -645,7 +645,7 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="5" type="cond" truecount="1" falsecount="0"/>
       </file>
       <file name="router.tsx" path="C:\Users\Alena\Desktop\React-Components\react-components\src\router\router.tsx">
         <metrics statements="21" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>

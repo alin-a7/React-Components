@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/35</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/35</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -109,28 +109,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component } from 'react'
@@ -143,29 +143,29 @@ import { NAVIGATION_MENU } from './constants'
 import styles from './Menu.module.scss'
 &nbsp;
 class Menu extends Component {
-<span class="fstat-no" title="function not covered" >  render() {</span>
-<span class="cstat-no" title="statement not covered" >    const currentPage = window.location.pathname.slice(1)</span>
-<span class="cstat-no" title="statement not covered" >    </span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div className={styles.container}&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;nav className={styles.navigation}&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;NavLink to={PATHS.CARDS}&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;img</span>
-<span class="cstat-no" title="statement not covered" >              src="../../src/assets/logo.svg"</span>
-<span class="cstat-no" title="statement not covered" >              alt="logo"</span>
-<span class="cstat-no" title="statement not covered" >              className={styles.logo}</span>
-<span class="cstat-no" title="statement not covered" >            /&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;/NavLink&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {NAVIGATION_MENU.map(({ to, label }, index) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >            &lt;NavLink key={index} to={to} className={styles.menuItem}&gt;</span>
-<span class="cstat-no" title="statement not covered" >              {label}</span>
-<span class="cstat-no" title="statement not covered" >            &lt;/NavLink&gt;</span>
-<span class="cstat-no" title="statement not covered" >          ))}</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/nav&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div&gt;Current page: {currentPage}&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >    )</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  render() {
+    const currentPage = window.location.pathname.slice(1)
+    
+    return (
+      &lt;div className={styles.container}&gt;
+        &lt;nav className={styles.navigation}&gt;
+          &lt;NavLink to={PATHS.CARDS}&gt;
+            &lt;img
+              src="../../src/assets/logo.svg"
+              alt="logo"
+              className={styles.logo}
+            /&gt;
+          &lt;/NavLink&gt;
+          {NAVIGATION_MENU.map(({ to, label }, index) =&gt; (
+            &lt;NavLink key={index} to={to} className={styles.menuItem}&gt;
+              {label}
+            &lt;/NavLink&gt;
+          ))}
+        &lt;/nav&gt;
+        &lt;div&gt;Current page: {currentPage}&lt;/div&gt;
+      &lt;/div&gt;
+    )
+  }
 }
 export default Menu
 &nbsp;</pre></td></tr></table></pre>
@@ -175,7 +175,7 @@ export default Menu
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-20T13:38:03.520Z
+                at 2023-03-20T14:13:10.379Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
