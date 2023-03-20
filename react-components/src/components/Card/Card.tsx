@@ -15,7 +15,7 @@ export interface Product {
 class Card extends Component<Product> {
   render() {
     return (
-      <div className={styles.card}>
+      <div className={styles.card} data-testid="card">
         <img
           src={this.props.image}
           alt={this.props.title}
@@ -28,7 +28,7 @@ class Card extends Component<Product> {
             <div>Rate: {this.props.rating.rate}</div>
             <div>Count: {this.props.rating.count}</div>
           </div>
-          <div className={styles.price}>{this.props.rating.count}$</div>
+          <div className={styles.price}>{this.props.price}$</div>
         </div>
       </div>
     )

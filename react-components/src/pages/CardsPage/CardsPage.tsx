@@ -2,7 +2,6 @@ import React, { ChangeEvent, Component } from 'react'
 
 import Card from '../../components/Card'
 import Layout from '../../components/Layout'
-
 import { Product } from '../../components/Card/Card'
 import InputSearch from '../../components/InputSearch'
 
@@ -57,29 +56,26 @@ class CardsPage extends Component<object, CardsPageProps> {
 
   render(): React.ReactNode {
     const { error, isLoaded, items, searchValue } = this.state
-    if (error) {
+    if (error)
       return <Layout>Download error, check your internet connection</Layout>
-    } else if (!isLoaded) {
-      return <Layout>Loading...</Layout>
-    } else {
-      return (
-        <Layout>
-          <InputSearch
-            value={searchValue || ''}
-            onChange={(e) => this.search(e)}
-          />
-          <div className={styles.cardWrapper}>
-            {items
-              .filter((item: Product) =>
-                item.title.toLocaleLowerCase().includes(searchValue || ''),
-              )
-              .map((item: Product) => (
-                <Card key={item.id} {...item} />
-              ))}
-          </div>
-        </Layout>
-      )
-    }
+    if (!isLoaded) return <Layout>Loading...</Layout>
+    return (
+      <Layout>
+        <InputSearch
+          value={searchValue || ''}
+          onChange={(e) => this.search(e)}
+        />
+        <div className={styles.cardWrapper}>
+          {items
+            .filter((item: Product) =>
+              item.title.toLocaleLowerCase().includes(searchValue || ''),
+            )
+            .map((item: Product) => (
+              <Card key={item.id} {...item} />
+            ))}
+        </div>
+      </Layout>
+    )
   }
 }
 
