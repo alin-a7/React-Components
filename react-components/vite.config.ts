@@ -13,6 +13,7 @@ export default defineConfig({
     setupFiles: './src/tests/setup.ts',
     coverage: {
       all: true,
+      reporter: ['text']
     },
   },
 })

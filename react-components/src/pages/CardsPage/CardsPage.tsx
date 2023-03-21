@@ -7,14 +7,18 @@ import InputSearch from '../../components/InputSearch'
 
 import styles from './CardsPage.module.scss'
 
-interface CardsPageProps {
+interface CardsPageState {
   error: null | string
   isLoaded: boolean
   items: Product[]
   searchValue: string | null
 }
 
-class CardsPage extends Component<object, CardsPageProps> {
+interface CardsPageProps {
+  title: string
+}
+
+class CardsPage extends Component<CardsPageProps, CardsPageState> {
   constructor(props: CardsPageProps) {
     super(props)
     this.state = {
