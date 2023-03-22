@@ -13,9 +13,9 @@ class CardsList extends Component<CardsListProps> {
     return (
       <div>
         {this.props.cardArray.map(
-          ({ text, date, language, gender, file }, index) => (
+          ({ text, date, language, gender, file, agreement }, index) => (
             <div key={index}>
-              {text} {date} {language} {gender}
+              {text} {date} {language} {gender} {agreement+'z'}
               <img src={file} />
             </div>
           ),

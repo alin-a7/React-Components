@@ -12,6 +12,7 @@ import InputRadio from './InputRadio'
 
 import styles from './Form.module.scss'
 import InputFile from './InputFile'
+import InputCheckbox from './InputCheckbox'
 
 interface FormProps {
   createCard: (card: FormState) => void
@@ -23,6 +24,7 @@ export interface FormState {
   language: string
   gender: string
   file: string
+  agreement: boolean
 }
 
 class Form extends Component<FormProps, FormState> {
@@ -34,11 +36,14 @@ class Form extends Component<FormProps, FormState> {
       language: 'russian',
       gender: '',
       file: '',
+      agreement: false,
     }
   }
 
   formSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    console.log(this?.state)
+
     this?.props.createCard(this.state)
   }
 
@@ -72,6 +77,12 @@ class Form extends Component<FormProps, FormState> {
         <InputFile
           value={this.state.file}
           onChange={this.uploadFile.bind(this)}
+        />
+        <InputCheckbox
+          checked={this.state.agreement}
+          onChange={(event) =>
+            this.setState({ agreement: event.target.checked })
+          }
         />
         <button
           className={styles.button}
