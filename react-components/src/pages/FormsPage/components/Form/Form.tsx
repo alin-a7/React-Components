@@ -1,9 +1,10 @@
 import React, { ChangeEvent, Component, FormEvent } from 'react'
 
 import InputTextAndDate from './InputTextAndDate'
+import InputSelect from './InputSelect'
+import InputRadio from './InputRadio'
 
 import styles from './Form.module.scss'
-import InputSelect from './InputSelect'
 
 interface FormProps {
   createCard: (card: FormState) => void
@@ -13,6 +14,7 @@ export interface FormState {
   text: string
   date: string
   language: string
+  gender: string
 }
 
 class Form extends Component<FormProps, FormState> {
@@ -22,6 +24,7 @@ class Form extends Component<FormProps, FormState> {
       text: '',
       date: '',
       language: 'russian',
+      gender: '',
     }
   }
 
@@ -46,6 +49,10 @@ class Form extends Component<FormProps, FormState> {
         <InputSelect
           value={this.state.language}
           onChange={(event) => this.setState({ language: event.target.value })}
+        />
+        <InputRadio
+          value={this.state.gender}
+          onChange={(event) => this.setState({ gender: event.target.value })}
         />
         <button
           className={styles.button}
