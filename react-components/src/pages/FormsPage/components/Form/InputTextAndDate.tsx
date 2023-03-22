@@ -5,13 +5,14 @@ import styles from './Form.module.scss'
 interface InputTextProps {
   onChange: ChangeEventHandler<HTMLInputElement>
   value?: string 
+  type: string 
 }
 
-class InputText extends Component<InputTextProps> {
+class InputTextAndDate extends Component<InputTextProps> {
   render() {
     return (
         <input
-          type="text"
+          type={this.props.type}
           className={styles.textInput}
           placeholder="Enter your first and last name"
           onChange={this.props.onChange}
@@ -21,4 +22,4 @@ class InputText extends Component<InputTextProps> {
   }
 }
 
-export default InputText
+export default InputTextAndDate

@@ -12,8 +12,8 @@ class CardsList extends Component<CardsListProps> {
   render(): React.ReactNode {
     return (
       <div>
-        {this.props.cardArray.map(({ name }, index) => (
-          <div key={index}>{name}</div>
+        {this.props.cardArray.map(({ text, date }, index) => (
+          <div key={index}>{text} {date}</div>
         ))}
       </div>
     )

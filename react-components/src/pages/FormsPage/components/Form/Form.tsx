@@ -1,6 +1,6 @@
-import React, { ChangeEvent, ChangeEventHandler, Component } from 'react'
+import React, { ChangeEvent, Component } from 'react'
 
-import InputText from './InputText'
+import InputTextAndDate from './InputTextAndDate'
 
 import styles from './Form.module.scss'
 
@@ -9,31 +9,42 @@ interface FormProps {
 }
 
 export interface FormState {
-  name: string
+  text: string
+  date: string
 }
 
 class Form extends Component<FormProps, FormState> {
   constructor(props: FormProps) {
     super(props)
     this.state = {
-      name: '',
+      text: '',
+      date: '',
     }
   }
 
   handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const target = event.target
     const value = target.value
-    this.setState({
-      name: value,
-    })
-    this.setState({})
+    target.type === 'text'
+      ? this.setState({
+          text: value,
+        })
+      : this.setState({
+          date: value,
+        })
   }
 
   render(): React.ReactNode {
     return (
       <div className={styles.wrapper}>
-        <InputText
-          value={this.state.name}
+        <InputTextAndDate
+          type="text"
+          value={this.state.text}
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <InputTextAndDate
+          type="date"
+          value={this.state.date}
           onChange={this.handleInputChange.bind(this)}
         />
         <button
