@@ -12,7 +12,8 @@
 }
 
 .textInput,
-.selectItems {
+.selectItems,
+.fileInput {
   background-color: transparent;
   opacity: 0.8;
 
@@ -54,6 +55,30 @@
   & option {
     color: white;
     background: #1e1c33;
+  }
+}
+
+.radioLabel {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileInput {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  & input {
+    display: none;
+  }
+
+  & .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

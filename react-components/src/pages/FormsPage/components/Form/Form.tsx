@@ -1,10 +1,17 @@
-import React, { ChangeEvent, Component, FormEvent } from 'react'
+import React, {
+  ChangeEvent,
+  Component,
+  createRef,
+  FormEvent,
+  RefObject,
+} from 'react'
 
 import InputTextAndDate from './InputTextAndDate'
 import InputSelect from './InputSelect'
 import InputRadio from './InputRadio'
 
 import styles from './Form.module.scss'
+import InputFile from './InputFile'
 
 interface FormProps {
   createCard: (card: FormState) => void
@@ -15,6 +22,7 @@ export interface FormState {
   date: string
   language: string
   gender: string
+  file: string
 }
 
 class Form extends Component<FormProps, FormState> {
@@ -25,12 +33,19 @@ class Form extends Component<FormProps, FormState> {
       date: '',
       language: 'russian',
       gender: '',
+      file: '',
     }
   }
 
   formSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     this?.props.createCard(this.state)
+  }
+
+  uploadFile(event: ChangeEvent<HTMLInputElement>) {
+    const files = event.target.files
+    const file = files?.item(0)?.name as string
+    this.setState({ file: file })
   }
 
   render(): React.ReactNode {
@@ -53,6 +68,10 @@ class Form extends Component<FormProps, FormState> {
         <InputRadio
           value={this.state.gender}
           onChange={(event) => this.setState({ gender: event.target.value })}
+        />
+        <InputFile
+          value={this.state.file}
+          onChange={this.uploadFile.bind(this)}
         />
         <button
           className={styles.button}

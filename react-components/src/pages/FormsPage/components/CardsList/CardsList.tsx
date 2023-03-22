@@ -12,9 +12,14 @@ class CardsList extends Component<CardsListProps> {
   render(): React.ReactNode {
     return (
       <div>
-        {this.props.cardArray.map(({ text, date, language, gender }, index) => (
-          <div key={index}>{text} {date} {language} {gender}</div>
-        ))}
+        {this.props.cardArray.map(
+          ({ text, date, language, gender, file }, index) => (
+            <div key={index}>
+              {text} {date} {language} {gender}
+              <img src={file} />
+            </div>
+          ),
+        )}
       </div>
     )
   }

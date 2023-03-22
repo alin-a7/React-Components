@@ -34,15 +34,14 @@ interface InputRadioItemProps extends InputRadioProps {
 class InputRadioItem extends Component<InputRadioItemProps> {
   render() {
     return (
-      <>
-        <span>{this.props.itemValue}</span>
+        <label className={styles.radioLabel}>{this.props.itemValue}
         <input
           type="radio"
           value={this.props.itemValue}
           checked={this.props.value === this.props.itemValue ? true : false}
           onChange={this.props.onChange}
         />
-      </>
+        </label>
     )
   }
 }
