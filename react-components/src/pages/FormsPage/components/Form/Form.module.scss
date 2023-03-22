@@ -11,7 +11,8 @@
   padding: 10px 20px;
 }
 
-.textInput {
+.textInput,
+.selectItems {
   background-color: transparent;
   opacity: 0.8;
 
@@ -37,6 +38,22 @@
 
   &:focus-visible {
     outline: transparent !important;
+  }
+}
+
+.selectInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.selectItems {
+  width: 50%;
+
+  & option {
+    color: white;
+    background: #1e1c33;
   }
 }
 

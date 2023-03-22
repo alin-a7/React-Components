@@ -18,10 +18,10 @@ class FormsPage extends Component<object, FormsPageState> {
     this.state = {
       cardArray: [],
     }
-    this.formSubmit = this.formSubmit.bind(this)
+    this.createCard = this.createCard.bind(this)
   }
 
-  formSubmit(card: FormState){
+  createCard(card: FormState){
     this.setState({ cardArray: [...this.state.cardArray, card] })
   }
 
@@ -29,7 +29,7 @@ class FormsPage extends Component<object, FormsPageState> {
     return (
       <Layout>
         <div className={styles.wrapper}>
-          <Form formSubmit={this.formSubmit}/>
+          <Form createCard={this.createCard}/>
           <CardsList cardArray={this.state.cardArray}/>
         </div>
       </Layout>

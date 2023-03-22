@@ -1,16 +1,18 @@
-import React, { ChangeEvent, Component } from 'react'
+import React, { ChangeEvent, Component, FormEvent } from 'react'
 
 import InputTextAndDate from './InputTextAndDate'
 
 import styles from './Form.module.scss'
+import InputSelect from './InputSelect'
 
 interface FormProps {
-  formSubmit: (card: FormState) => void
+  createCard: (card: FormState) => void
 }
 
 export interface FormState {
   text: string
   date: string
+  language: string
 }
 
 class Form extends Component<FormProps, FormState> {
@@ -19,41 +21,39 @@ class Form extends Component<FormProps, FormState> {
     this.state = {
       text: '',
       date: '',
+      language: 'russian',
     }
   }
 
-  handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    const target = event.target
-    const value = target.value
-    target.type === 'text'
-      ? this.setState({
-          text: value,
-        })
-      : this.setState({
-          date: value,
-        })
+  formSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    this?.props.createCard(this.state)
   }
 
   render(): React.ReactNode {
     return (
-      <div className={styles.wrapper}>
+      <form onSubmit={this.formSubmit} className={styles.wrapper}>
         <InputTextAndDate
           type="text"
           value={this.state.text}
-          onChange={this.handleInputChange.bind(this)}
+          onChange={(event) => this.setState({ text: event.target.value })}
         />
         <InputTextAndDate
           type="date"
           value={this.state.date}
-          onChange={this.handleInputChange.bind(this)}
+          onChange={(event) => this.setState({ date: event.target.value })}
+        />
+        <InputSelect
+          value={this.state.language}
+          onChange={(event) => this.setState({ language: event.target.value })}
         />
         <button
           className={styles.button}
-          onClick={() => this.props.formSubmit(this.state)}
+          onClick={() => this.props.createCard(this.state)}
         >
           Create card!
         </button>
-      </div>
+      </form>
     )
   }
 }
