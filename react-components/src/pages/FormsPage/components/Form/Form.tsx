@@ -1,18 +1,13 @@
-import React, {
-  ChangeEvent,
-  Component,
-  createRef,
-  FormEvent,
-  RefObject,
-} from 'react'
+import React, { ChangeEvent, Component, FormEvent } from 'react'
 
 import InputTextAndDate from './InputTextAndDate'
+import InputCheckbox from './InputCheckbox'
 import InputSelect from './InputSelect'
 import InputRadio from './InputRadio'
+import InputFile from './InputFile'
 
 import styles from './Form.module.scss'
-import InputFile from './InputFile'
-import InputCheckbox from './InputCheckbox'
+import { nameValidation } from './helpers'
 
 interface FormProps {
   createCard: (card: FormState) => void
@@ -25,6 +20,12 @@ export interface FormState {
   gender: string
   file: string
   agreement: boolean
+  textError: boolean
+  dateError: boolean
+  languageError: boolean
+  genderError: boolean
+  fileError: boolean
+  agreementError: boolean
 }
 
 class Form extends Component<FormProps, FormState> {
@@ -33,18 +34,46 @@ class Form extends Component<FormProps, FormState> {
     this.state = {
       text: '',
       date: '',
-      language: 'russian',
+      language: '',
       gender: '',
       file: '',
       agreement: false,
+      textError: false,
+      dateError: false,
+      languageError: false,
+      genderError: false,
+      fileError: false,
+      agreementError: false,
     }
+    this.formSubmit = this.formSubmit.bind(this)
   }
 
-  formSubmit(event: FormEvent<HTMLFormElement>) {
+  formSubmit(event: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     event.preventDefault()
-    console.log(this?.state)
-
-    this?.props.createCard(this.state)
+    const textError = !nameValidation(this.state.text)
+    const dateError = !this.state.date
+    const languageError = !this.state.language
+    const genderError = !this.state.gender
+    const fileError = !this.state.file
+    const agreementError = !this.state.agreement
+    this.setState({
+      textError: textError,
+      dateError: dateError,
+      languageError: languageError,
+      genderError: genderError,
+      fileError: fileError,
+      agreementError: agreementError,
+    })
+    if (
+      !textError &&
+      !dateError &&
+      !languageError &&
+      !genderError &&
+      !fileError &&
+      !agreementError
+    ) {
+      this?.props.createCard(this.state)
+    }
   }
 
   uploadFile(event: ChangeEvent<HTMLInputElement>) {
@@ -59,35 +88,38 @@ class Form extends Component<FormProps, FormState> {
         <InputTextAndDate
           type="text"
           value={this.state.text}
+          error={this.state.textError}
           onChange={(event) => this.setState({ text: event.target.value })}
         />
         <InputTextAndDate
           type="date"
           value={this.state.date}
+          error={this.state.dateError}
           onChange={(event) => this.setState({ date: event.target.value })}
         />
         <InputSelect
           value={this.state.language}
+          error={this.state.languageError}
           onChange={(event) => this.setState({ language: event.target.value })}
         />
         <InputRadio
           value={this.state.gender}
+          error={this.state.genderError}
           onChange={(event) => this.setState({ gender: event.target.value })}
         />
         <InputFile
           value={this.state.file}
+          error={this.state.fileError}
           onChange={this.uploadFile.bind(this)}
         />
         <InputCheckbox
           checked={this.state.agreement}
+          error={this.state.agreementError}
           onChange={(event) =>
             this.setState({ agreement: event.target.checked })
           }
         />
-        <button
-          className={styles.button}
-          onClick={() => this.props.createCard(this.state)}
-        >
+        <button className={styles.button} onSubmit={this.formSubmit}>
           Create card!
         </button>
       </form>

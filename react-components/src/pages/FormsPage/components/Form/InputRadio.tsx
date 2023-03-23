@@ -5,24 +5,28 @@ import styles from './Form.module.scss'
 interface InputRadioProps {
   onChange: ChangeEventHandler<HTMLInputElement>
   value: string
+  error?: boolean
 }
 
 class InputRadio extends Component<InputRadioProps> {
   render() {
     return (
-      <label className={styles.selectInput}>
-        Select a gender:
-        <InputRadioItem
-          value={this.props.value}
-          onChange={this.props.onChange}
-          itemValue="male"
-        />
-        <InputRadioItem
-          value={this.props.value}
-          onChange={this.props.onChange}
-          itemValue="female"
-        />
-      </label>
+      <>
+        <label className={styles.selectInput}>
+          Select a gender:
+          <InputRadioItem
+            value={this.props.value}
+            onChange={this.props.onChange}
+            itemValue="male"
+          />
+          <InputRadioItem
+            value={this.props.value}
+            onChange={this.props.onChange}
+            itemValue="female"
+          />
+        </label>
+        {this.props.error && <div className={styles.error}>The field is required</div>}
+      </>
     )
   }
 }
@@ -34,14 +38,15 @@ interface InputRadioItemProps extends InputRadioProps {
 class InputRadioItem extends Component<InputRadioItemProps> {
   render() {
     return (
-        <label className={styles.radioLabel}>{this.props.itemValue}
+      <label className={styles.radioLabel}>
+        {this.props.itemValue}
         <input
           type="radio"
           value={this.props.itemValue}
           checked={this.props.value === this.props.itemValue ? true : false}
           onChange={this.props.onChange}
         />
-        </label>
+      </label>
     )
   }
 }

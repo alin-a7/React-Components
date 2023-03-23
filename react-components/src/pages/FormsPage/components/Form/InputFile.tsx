@@ -4,20 +4,24 @@ import styles from './Form.module.scss'
 
 interface InputSelectProps {
   onChange: ChangeEventHandler<HTMLInputElement>
-  value?: string
+  value: string
+  error: boolean
 }
 
 class InputFile extends Component<InputSelectProps> {
   render() {
     return (
-      <label className={styles.fileInput}>
-        <div className={styles.title}>Upload file: {this.props.value}</div>
-        <input
-          type="file"
-          className={styles.input}
-          onChange={(event) => this.props.onChange(event)}
-        />
-      </label>
+      <>
+        <label className={styles.fileInput}>
+          <div className={styles.title}>Upload file: {this.props.value}</div>
+          <input
+            type="file"
+            className={styles.input}
+            onChange={(event) => this.props.onChange(event)}
+          />
+        </label>
+        {this.props.error && <div className={styles.error}>The field is required</div>}
+      </>
     )
   }
 }
