@@ -1,16 +1,20 @@
 import { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+
+import { PATHS } from '../../router/paths'
 
 import styles from './Page404.module.scss'
 
 class Page404 extends Component {
-
   render() {
     return (
       <div className={styles.wrapper}>
         <h1 className={styles.title}>404 NOT FOUND</h1>
-        <p className={styles.text}>
-          Please, keep calm and return to the previous page
-        </p>
+        <NavLink to={PATHS.CARDS}>
+          <p className={styles.text}>
+            Please, keep calm and return to the home page
+          </p>
+        </NavLink>
       </div>
     )
   }
