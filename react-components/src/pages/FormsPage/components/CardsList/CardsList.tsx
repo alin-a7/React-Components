@@ -11,12 +11,15 @@ interface CardsListProps {
 class CardsList extends Component<CardsListProps> {
   render(): React.ReactNode {
     return (
-      <div>
+      <div className={styles.cardWrapper}>
         {this.props.cardArray.map(
-          ({ text, date, language, gender, file, agreement }, index) => (
-            <div key={index}>
-              {text} {date} {language} {gender} {agreement+'z'}
-              <img src={file} />
+          ({ text, date, language, gender, file }, index) => (
+            <div key={index} className={styles.card}>
+              <img className={styles.image} src={file} />
+              <div className={styles.name}>Name: {text}</div>
+              <div>Birthday: {date}</div>
+              <div>Language: {language}</div>
+              <div>Gender: {gender}</div>
             </div>
           ),
         )}

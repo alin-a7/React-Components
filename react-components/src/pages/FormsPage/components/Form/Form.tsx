@@ -1,13 +1,13 @@
 import React, { ChangeEvent, Component, FormEvent } from 'react'
 
-import InputTextAndDate from './InputTextAndDate'
-import InputCheckbox from './InputCheckbox'
-import InputSelect from './InputSelect'
-import InputRadio from './InputRadio'
-import InputFile from './InputFile'
+import InputTextAndDate from './components/InputTextAndDate'
+import InputCheckbox from './components/InputCheckbox'
+import InputSelect from './components/InputSelect'
+import InputRadio from './components/InputRadio'
+import InputFile from './components/InputFile'
+import { nameValidation } from './helpers'
 
 import styles from './Form.module.scss'
-import { nameValidation } from './helpers'
 
 interface FormProps {
   createCard: (card: FormState) => void
@@ -18,7 +18,7 @@ export interface FormState {
   date: string
   language: string
   gender: string
-  file: string
+  file: string 
   agreement: boolean
   textError: boolean
   dateError: boolean
@@ -72,14 +72,21 @@ class Form extends Component<FormProps, FormState> {
       !fileError &&
       !agreementError
     ) {
-      this?.props.createCard(this.state)
+      this.props.createCard(this.state)
+      this.setState({
+        text: '',
+        date: '',
+        language: '',
+        gender: '',
+        file: '',
+      })
     }
   }
 
   uploadFile(event: ChangeEvent<HTMLInputElement>) {
     const files = event.target.files
-    const file = files?.item(0)?.name as string
-    this.setState({ file: file })
+    const file = files?.item(0)  as File
+    this.setState({ file: URL.createObjectURL(file) })
   }
 
   render(): React.ReactNode {
@@ -108,7 +115,7 @@ class Form extends Component<FormProps, FormState> {
           onChange={(event) => this.setState({ gender: event.target.value })}
         />
         <InputFile
-          value={this.state.file}
+          value={this.state.file as string}
           error={this.state.fileError}
           onChange={this.uploadFile.bind(this)}
         />

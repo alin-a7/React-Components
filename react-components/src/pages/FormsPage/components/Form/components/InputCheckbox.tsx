@@ -1,6 +1,6 @@
 import { ChangeEventHandler, Component } from 'react'
 
-import styles from './Form.module.scss'
+import styles from '../Form.module.scss'
 
 interface InputCheckboxProps {
   onChange: ChangeEventHandler<HTMLInputElement>
