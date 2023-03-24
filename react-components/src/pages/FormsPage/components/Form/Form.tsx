@@ -18,13 +18,14 @@ export interface FormState {
   date: string
   language: string
   gender: string
-  file: string 
+  file: string
   agreement: boolean
   textError: boolean
   dateError: boolean
   languageError: boolean
   genderError: boolean
   fileError: boolean
+  succes: boolean
   agreementError: boolean
 }
 
@@ -44,6 +45,7 @@ class Form extends Component<FormProps, FormState> {
       genderError: false,
       fileError: false,
       agreementError: false,
+      succes: false,
     }
     this.formSubmit = this.formSubmit.bind(this)
   }
@@ -79,13 +81,16 @@ class Form extends Component<FormProps, FormState> {
         language: '',
         gender: '',
         file: '',
+        agreement: false,
+        succes: true,
       })
+      setTimeout(() => this.setState({ succes: false }), 2000)
     }
   }
 
   uploadFile(event: ChangeEvent<HTMLInputElement>) {
     const files = event.target.files
-    const file = files?.item(0)  as File
+    const file = files?.item(0) as File
     this.setState({ file: URL.createObjectURL(file) })
   }
 
@@ -129,6 +134,9 @@ class Form extends Component<FormProps, FormState> {
         <button className={styles.button} onSubmit={this.formSubmit}>
           Create card!
         </button>
+        {this.state.succes && (
+          <div className={styles.succes}>Form completed successfully!</div>
+        )}
       </form>
     )
   }
