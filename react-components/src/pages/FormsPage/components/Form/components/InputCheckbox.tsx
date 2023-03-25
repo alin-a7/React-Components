@@ -4,7 +4,7 @@ import styles from '../Form.module.scss'
 
 interface InputCheckboxProps {
   onChange: ChangeEventHandler<HTMLInputElement>
-  checked: boolean
+  checked?: boolean
   error: boolean
 }
 
@@ -15,6 +15,7 @@ class InputCheckbox extends Component<InputCheckboxProps> {
         <label className={styles.checkbox}>
           <input
             type="checkbox"
+            data-testid="checkbox"
             checked={this.props.checked}
             onChange={this.props.onChange}
           />
