@@ -1,13 +1,14 @@
-import { ChangeEventHandler, Component } from 'react'
+import { ChangeEventHandler, Component, RefObject } from 'react'
 
 import { OPTIONS } from './constant'
 
 import styles from '../Form.module.scss'
 
 interface InputSelectProps {
-  onChange: ChangeEventHandler<HTMLSelectElement>
+  onChange?: ChangeEventHandler<HTMLSelectElement>
   value?: string
   error: boolean
+  refs: RefObject<HTMLSelectElement>
 }
 
 class InputSelect extends Component<InputSelectProps> {
@@ -17,6 +18,7 @@ class InputSelect extends Component<InputSelectProps> {
         <label className={styles.selectInput}>
           Select a language:
           <select
+            ref={this.props.refs}
             data-testid="select"
             className={styles.selectItems}
             value={this.props.value}

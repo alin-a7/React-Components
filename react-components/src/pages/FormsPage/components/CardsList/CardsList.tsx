@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import { FormState } from '../Form/Form'
+import { ICard } from '../../FormsPage'
 
 import styles from './CardsList.module.scss'
 
 interface CardsListProps {
-  cardArray: FormState[]
+  cardArray: ICard[]
 }
 
 class CardsList extends Component<CardsListProps> {
@@ -15,7 +15,7 @@ class CardsList extends Component<CardsListProps> {
         {this.props.cardArray.map(
           ({ text, date, language, gender, file }, index) => (
             <div key={index} className={styles.card}>
-              <img className={styles.image} src={file} />
+              <img className={styles.image} src={file} alt={text}/>
               <div className={styles.name}>Name: {text}</div>
               <div>Birthday: {date}</div>
               <div>Language: {language}</div>

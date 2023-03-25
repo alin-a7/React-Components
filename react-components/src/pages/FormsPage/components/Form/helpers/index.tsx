@@ -1,6 +1,10 @@
 export const nameValidation = (name: string) => {
-  const firstName = name.trim().split(' ')[0]
-  const lastName = name.trim().split(' ')[1]
+  const newName = name
+    .trim()
+    .split(' ')
+    .filter((item) => item !== '')
+  const firstName = newName[0]
+  const lastName = newName[1]
 
   return lastName
     ? firstName[0] === firstName[0].toUpperCase() &&

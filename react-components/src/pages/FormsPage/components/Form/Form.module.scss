@@ -70,17 +70,6 @@
 
   display: flex;
   align-items: center;
-
-  & input {
-    display: none;
-  }
-
-  & .title {
-    max-width: 250px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
 .checkbox {

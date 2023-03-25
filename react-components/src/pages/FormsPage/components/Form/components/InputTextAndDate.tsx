@@ -1,12 +1,13 @@
-import { ChangeEventHandler, Component } from 'react'
+import { ChangeEventHandler, Component, RefObject } from 'react'
 
 import styles from '../Form.module.scss'
 
 interface InputTextProps {
-  onChange: ChangeEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
   value?: string
   type: string
   error: boolean
+  refs: RefObject<HTMLInputElement>
 }
 
 class InputTextAndDate extends Component<InputTextProps> {
@@ -14,6 +15,7 @@ class InputTextAndDate extends Component<InputTextProps> {
     return (
       <>
         <input
+          ref={this.props.refs}
           type={this.props.type}
           className={styles.textInput}
           placeholder="Enter your first and last name"

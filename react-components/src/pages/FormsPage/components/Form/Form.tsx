@@ -1,4 +1,11 @@
-import React, { ChangeEvent, Component, FormEvent } from 'react'
+import React, {
+  Component,
+  createRef,
+  FormEvent,
+  RefObject,
+} from 'react'
+
+import { ICard } from '../../FormsPage'
 
 import InputTextAndDate from './components/InputTextAndDate'
 import InputCheckbox from './components/InputCheckbox'
@@ -10,16 +17,11 @@ import { nameValidation } from './helpers'
 import styles from './Form.module.scss'
 
 interface FormProps {
-  createCard: (card: FormState) => void
+  createCard: (card: ICard) => void
 }
 
 export interface FormState {
-  text: string
-  date: string
-  language: string
   gender: string
-  file: string
-  agreement: boolean
   textError: boolean
   dateError: boolean
   languageError: boolean
@@ -33,12 +35,7 @@ class Form extends Component<FormProps, FormState> {
   constructor(props: FormProps) {
     super(props)
     this.state = {
-      text: '',
-      date: '',
-      language: '',
       gender: '',
-      file: '',
-      agreement: false,
       textError: false,
       dateError: false,
       languageError: false,
@@ -47,17 +44,43 @@ class Form extends Component<FormProps, FormState> {
       agreementError: false,
       succes: false,
     }
+    this.inputsRefs = {
+      form: createRef(),
+      name: createRef(),
+      date: createRef(),
+      language: createRef(),
+      gender: createRef(),
+      file: createRef(),
+      agreement: createRef(),
+    }
     this.formSubmit = this.formSubmit.bind(this)
+  }
+  inputsRefs: {
+    form: RefObject<HTMLFormElement>
+    name: RefObject<HTMLInputElement>
+    date: RefObject<HTMLInputElement>
+    language: RefObject<HTMLSelectElement>
+    gender: RefObject<HTMLInputElement>
+    file: RefObject<HTMLInputElement>
+    agreement: RefObject<HTMLInputElement>
   }
 
   formSubmit(event: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     event.preventDefault()
-    const textError = !nameValidation(this.state.text)
-    const dateError = !this.state.date
-    const languageError = !this.state.language
-    const genderError = !this.state.gender
-    const fileError = !this.state.file
-    const agreementError = !this.state.agreement
+    const card: ICard = {
+      text: this.inputsRefs.name?.current?.value as string,
+      date: this.inputsRefs.date?.current?.value as string,
+      language: this.inputsRefs.language?.current?.value as string,
+      gender: this.inputsRefs.gender?.current?.checked ? 'male' : 'female',
+      file: this.uploadFile(this.inputsRefs.file?.current?.files as FileList),
+    }
+    const textError = !nameValidation(card.text)
+    const dateError = !card.date
+    const languageError = !card.language
+    const genderError = !card.gender
+    const fileError = !card.file
+    const agreementError = !this.inputsRefs.agreement?.current
+      ?.checked as boolean
     this.setState({
       textError: textError,
       dateError: dateError,
@@ -74,62 +97,58 @@ class Form extends Component<FormProps, FormState> {
       !fileError &&
       !agreementError
     ) {
-      this.props.createCard(this.state)
-      this.setState({
-        text: '',
-        date: '',
-        language: '',
-        gender: '',
-        file: '',
-        agreement: false,
-        succes: true,
-      })
+      this.props.createCard(card)
+      this.setState({ succes: true, gender: '' })
       setTimeout(() => this.setState({ succes: false }), 2000)
+      this.inputsRefs.form.current?.reset()
     }
   }
 
-  uploadFile(event: ChangeEvent<HTMLInputElement>) {
-    const files = event.target.files
-    const file = files?.item(0) as File
-    this.setState({ file: URL.createObjectURL(file) })
+  uploadFile(img: FileList) {
+    const file = img?.item(0) as File
+    if (!file) {
+      this.setState({ fileError: true })
+      return ''
+    }
+    return URL.createObjectURL(file)
   }
 
   render(): React.ReactNode {
     return (
-      <form data-testid='form' onSubmit={this.formSubmit} className={styles.wrapper}>
+      <form
+        ref={this.inputsRefs.form}
+        data-testid="form"
+        onSubmit={this.formSubmit}
+        className={styles.wrapper}
+      >
         <InputTextAndDate
           type="text"
-          value={this.state.text}
+          refs={this.inputsRefs.name}
           error={this.state.textError}
-          onChange={(event) => this.setState({ text: event.target.value })}
         />
         <InputTextAndDate
           type="date"
-          value={this.state.date}
+          refs={this.inputsRefs.date}
           error={this.state.dateError}
-          onChange={(event) => this.setState({ date: event.target.value })}
         />
         <InputSelect
-          value={this.state.language}
+          refs={this.inputsRefs.language}
           error={this.state.languageError}
-          onChange={(event) => this.setState({ language: event.target.value })}
         />
         <InputRadio
+          refs={this.inputsRefs.gender}
           value={this.state.gender}
           error={this.state.genderError}
           onChange={(event) => this.setState({ gender: event.target.value })}
         />
         <InputFile
-          value={this.state.file as string}
+          refs={this.inputsRefs.file}
+          value={this.inputsRefs.file?.current?.files!.item(0)?.name}
           error={this.state.fileError}
-          onChange={this.uploadFile.bind(this)}
         />
         <InputCheckbox
-          checked={this.state.agreement}
+          refs={this.inputsRefs.agreement}
           error={this.state.agreementError}
-          onChange={(event) =>
-            this.setState({ agreement: event.target.checked })
-          }
         />
         <button className={styles.button} onSubmit={this.formSubmit}>
           Create card!

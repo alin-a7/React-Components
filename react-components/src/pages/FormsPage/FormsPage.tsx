@@ -3,13 +3,20 @@ import { Component } from 'react'
 import Layout from '../../components/Layout'
 
 import CardsList from './components/CardsList'
-import { FormState } from './components/Form/Form'
 import Form from './components/Form'
 
 import styles from './FormsPage.module.scss'
 
+export interface ICard {
+  text: string
+  date: string
+  language: string
+  gender: string
+  file: string
+}
+
 interface FormsPageState {
-  cardArray: FormState[]
+  cardArray: ICard[]
 }
 
 class FormsPage extends Component<object, FormsPageState> {
@@ -21,7 +28,7 @@ class FormsPage extends Component<object, FormsPageState> {
     this.createCard = this.createCard.bind(this)
   }
 
-  createCard(card: FormState){
+  createCard(card: ICard){
     this.setState({ cardArray: [...this.state.cardArray, card] })
   }
 

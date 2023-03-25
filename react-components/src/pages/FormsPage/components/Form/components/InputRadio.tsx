@@ -1,4 +1,4 @@
-import { ChangeEventHandler, Component } from 'react'
+import { ChangeEventHandler, Component, RefObject } from 'react'
 
 import styles from '../Form.module.scss'
 
@@ -6,6 +6,7 @@ interface InputRadioProps {
   onChange: ChangeEventHandler<HTMLInputElement>
   value: string
   error?: boolean
+  refs?: RefObject<HTMLInputElement>
 }
 
 class InputRadio extends Component<InputRadioProps> {
@@ -15,6 +16,7 @@ class InputRadio extends Component<InputRadioProps> {
         <label className={styles.selectInput}>
           Select a gender:
           <InputRadioItem
+            refs={this.props.refs}
             value={this.props.value}
             onChange={this.props.onChange}
             itemValue="male"
@@ -25,7 +27,9 @@ class InputRadio extends Component<InputRadioProps> {
             itemValue="female"
           />
         </label>
-        {this.props.error && <div className={styles.error}>The field is required</div>}
+        {this.props.error && (
+          <div className={styles.error}>The field is required</div>
+        )}
       </>
     )
   }
@@ -41,6 +45,7 @@ class InputRadioItem extends Component<InputRadioItemProps> {
       <label className={styles.radioLabel}>
         {this.props.itemValue}
         <input
+          ref={this.props.refs}
           type="radio"
           value={this.props.itemValue}
           checked={this.props.value === this.props.itemValue ? true : false}

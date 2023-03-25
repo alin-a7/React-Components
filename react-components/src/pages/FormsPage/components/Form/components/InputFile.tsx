@@ -1,11 +1,12 @@
-import { ChangeEventHandler, Component } from 'react'
+import { Component, RefObject } from 'react'
 
 import styles from '../Form.module.scss'
 
 interface InputSelectProps {
-  onChange: ChangeEventHandler<HTMLInputElement>
+  onChange?: (img: FileList)=> string
   value?: string
   error: boolean
+  refs: RefObject<HTMLInputElement>
 }
 
 class InputFile extends Component<InputSelectProps> {
@@ -13,11 +14,10 @@ class InputFile extends Component<InputSelectProps> {
     return (
       <>
         <label data-testid="file" className={styles.fileInput}>
-          <div className={styles.title}>Upload file: {this.props.value}</div>
           <input
+            ref={this.props.refs}
             type="file"
             className={styles.input}
-            onChange={(event) => this.props.onChange(event)}
           />
         </label>
         {this.props.error && (
