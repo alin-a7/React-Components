@@ -3,8 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 import InputSelect from '../pages/FormsPage/components/Form/components/InputSelect'
 import { OPTIONS } from '../pages/FormsPage/components/Form/components/constant'
 
-import InputSearch from '../components/InputSearch'
-
 describe('InputSelect component', () => {
   afterEach(() => {
     localStorage.clear()

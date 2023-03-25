@@ -96,7 +96,7 @@ class Form extends Component<FormProps, FormState> {
 
   render(): React.ReactNode {
     return (
-      <form onSubmit={this.formSubmit} className={styles.wrapper}>
+      <form data-testid='form' onSubmit={this.formSubmit} className={styles.wrapper}>
         <InputTextAndDate
           type="text"
           value={this.state.text}
