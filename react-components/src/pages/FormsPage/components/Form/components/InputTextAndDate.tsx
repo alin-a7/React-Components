@@ -4,7 +4,7 @@ import styles from '../Form.module.scss'
 
 interface InputTextProps {
   onChange: ChangeEventHandler<HTMLInputElement>
-  value: string
+  value?: string
   type: string
   error: boolean
 }
