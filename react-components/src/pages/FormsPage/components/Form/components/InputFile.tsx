@@ -14,6 +14,7 @@ class InputFile extends Component<InputSelectProps> {
         <label data-testid="file" className={styles.fileInput}>
           <input
             ref={this.props.refs}
+            accept="image/*"
             type="file"
             className={styles.input}
           />
