@@ -50,10 +50,6 @@ class CardsPage extends Component<CardsPageProps, CardsPageState> {
       )
   }
 
-  componentWillUnmount(): void {
-    localStorage.setItem('searchValue', JSON.stringify(this.state.searchValue))
-  }
-
   search(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value.trim().toLocaleLowerCase()
     this.setState({
