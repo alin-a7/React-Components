@@ -3,10 +3,8 @@ import { Component, RefObject } from 'react'
 import styles from '../Form.module.scss'
 
 interface InputSelectProps {
-  onChange?: (img: FileList)=> string
-  value?: string
   error: boolean
-  refs: RefObject<HTMLInputElement>
+  refs?: RefObject<HTMLInputElement>
 }
 
 class InputFile extends Component<InputSelectProps> {

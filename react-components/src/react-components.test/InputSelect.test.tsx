@@ -10,7 +10,7 @@ describe('InputSelect component', () => {
 
   it('must be changed select value', () => {
     const { getByTestId } = render(
-      <InputSelect onChange={() => null} error={false}/>,
+      <InputSelect error={false}/>,
     )
     const input = getByTestId("select") as HTMLSelectElement
     fireEvent.change(input, { target: { value: OPTIONS[1].value } })
@@ -19,7 +19,7 @@ describe('InputSelect component', () => {
 
   it('display an error message', () => {
     const { getByText } = render(
-      <InputSelect onChange={() => null} error={true} />,
+      <InputSelect error={true} />,
     )
     const error = getByText('The field is required')
     expect(error).toBeInTheDocument()

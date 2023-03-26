@@ -8,7 +8,7 @@ describe('InputText component', () => {
 
   it('must be changed input value', () => {
     const { getByPlaceholderText } = render(
-      <InputTextAndDate onChange={() => null} error={false} type="text" />,
+      <InputTextAndDate  error={false} type="text" />,
     )
     const input = getByPlaceholderText(
       'Enter your first and last name',
@@ -19,14 +19,14 @@ describe('InputText component', () => {
 
   it('display an error message', () => {
     const { getByText } = render(
-      <InputTextAndDate onChange={() => null} error={true} type="date" />,
+      <InputTextAndDate error={true} type="date" />,
     )
     const error = getByText('The field is required')
     expect(error).toBeInTheDocument()
   })
   it('display an error message', () => {
     const { getByText } = render(
-      <InputTextAndDate onChange={() => null} error={true} type="text" />,
+      <InputTextAndDate error={true} type="text" />,
     )
     const error = getByText('The name must consist of 2 words and begin with a capital letter')
     expect(error).toBeInTheDocument()

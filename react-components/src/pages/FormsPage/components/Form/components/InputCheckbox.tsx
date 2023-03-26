@@ -1,10 +1,8 @@
-import { ChangeEventHandler, Component, RefObject } from 'react'
+import { Component, RefObject } from 'react'
 
 import styles from '../Form.module.scss'
 
 interface InputCheckboxProps {
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  checked?: boolean
   error: boolean
   refs?: RefObject<HTMLInputElement>
 }
@@ -18,8 +16,6 @@ class InputCheckbox extends Component<InputCheckboxProps> {
             ref={this.props.refs}
             type="checkbox"
             data-testid="checkbox"
-            checked={this.props.checked}
-            onChange={this.props.onChange}
           />
           <span>I consent to my personal data</span>
         </label>

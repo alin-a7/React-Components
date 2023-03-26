@@ -9,7 +9,7 @@ describe('InputFile component', () => {
 
   it('display an error message', () => {
     const { getByText } = render(
-      <InputFile onChange={() => null} error={true} />,
+      <InputFile error={true} />,
     )
     const error = getByText('The field is required')
     expect(error).toBeInTheDocument()

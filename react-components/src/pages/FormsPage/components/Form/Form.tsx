@@ -143,7 +143,6 @@ class Form extends Component<FormProps, FormState> {
         />
         <InputFile
           refs={this.inputsRefs.file}
-          value={this.inputsRefs.file?.current?.files!.item(0)?.name}
           error={this.state.fileError}
         />
         <InputCheckbox
