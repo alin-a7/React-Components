@@ -7,6 +7,7 @@ import {
 import { useForm } from 'react-hook-form'
 
 import InputText from './components/InputText'
+import InputDate from './components/InputDate'
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'
 import InputRadio from './components/InputRadio'
@@ -67,12 +68,11 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
         register={register}
         error={errors?.text}
       />
-      {/* <InputTextAndDate
-          type="date"
-          value={this.state.date}
-          error={this.state.dateError}
-          onChange={(event) => this.setState({ date: event.target.value })}
-        />
+      <InputDate
+        register={register}
+        error={errors?.date}
+      />
+      {/*
         <InputSelect
           value={this.state.language}
           error={this.state.languageError}
