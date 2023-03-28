@@ -62,11 +62,7 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       <InputText register={register} error={errors?.text} />
       <InputDate register={register} error={errors?.date} />
       <InputSelect register={register} error={errors?.language} />
-      {/* <InputRadio
-          value={this.state.gender}
-          error={this.state.genderError}
-          onChange={(event) => this.setState({ gender: event.target.value })}
-        /> */}
+      <InputRadio register={register} error={errors?.gender} />
       {/* <InputFile
           value={this.state.file as string}
           error={this.state.fileError}

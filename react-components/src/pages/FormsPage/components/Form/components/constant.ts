@@ -29,6 +29,6 @@ export const OPTIONS: Ioption[] = [
 ]
 
 export interface InputsProps {
-  error: FieldError | undefined
+  error?: FieldError | undefined
   register: UseFormRegister<FormState>
 }
