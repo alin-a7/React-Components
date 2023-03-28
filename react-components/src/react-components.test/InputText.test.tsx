@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react'
-import InputTextAndDate from '../pages/FormsPage/components/Form/components/InputTextAndDate'
+import InputTextAndDate from '../pages/FormsPage/components/Form/components/InputText'
 
 describe('InputText component', () => {
   afterEach(() => {
