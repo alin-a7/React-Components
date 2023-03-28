@@ -1,9 +1,4 @@
-import {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useState,
-} from 'react'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import InputText from './components/InputText'
@@ -43,7 +38,7 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       file: '',
       agreement: false,
     },
-    mode: 'onBlur'
+    mode: 'onBlur',
   })
 
   const formSubmit = (data: FormState) => {
@@ -64,20 +59,9 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       onSubmit={handleSubmit(formSubmit)}
       className={styles.wrapper}
     >
-      <InputText
-        register={register}
-        error={errors?.text}
-      />
-      <InputDate
-        register={register}
-        error={errors?.date}
-      />
-      {/*
-        <InputSelect
-          value={this.state.language}
-          error={this.state.languageError}
-          onChange={(event) => this.setState({ language: event.target.value })}
-        /> */}
+      <InputText register={register} error={errors?.text} />
+      <InputDate register={register} error={errors?.date} />
+      <InputSelect register={register} error={errors?.language} />
       {/* <InputRadio
           value={this.state.gender}
           error={this.state.genderError}

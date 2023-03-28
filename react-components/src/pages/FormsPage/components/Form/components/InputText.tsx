@@ -1,17 +1,11 @@
 import { FC } from 'react'
-import { FieldError, UseFormRegister } from 'react-hook-form'
 
-import { FormState } from '../Form'
+import { nameValidation } from '../helpers'
+import { InputsProps } from './constant'
 
 import styles from '../Form.module.scss'
-import { nameValidation } from '../helpers'
 
-interface InputTextProps {
-  error: FieldError | undefined
-  register: UseFormRegister<FormState>
-}
-
-const InputText: FC<InputTextProps> = ({ error, register }) => {
+const InputText: FC<InputsProps> = ({ error, register }) => {
   return (
     <>
       <input
