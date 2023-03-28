@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 
 import Card from '../../components/Card'
 import Layout from '../../components/Layout'
@@ -7,84 +7,51 @@ import InputSearch from '../../components/InputSearch'
 
 import styles from './CardsPage.module.scss'
 
-interface CardsPageState {
-  error: null | string
-  isLoaded: boolean
-  items: Product[]
-  searchValue: string | null
-}
+const CardsPage = () => {
+  const [error, setError] = useState<boolean>(false)
+  const [isLoading, setIsloading] = useState<boolean>(false)
+  const [allProducts, setAllProduct] = useState<Product[]>([])
+  const [searchValue, setSearchValue] = useState<string>('')
 
-interface CardsPageProps {
-  title: string
-}
-
-class CardsPage extends Component<CardsPageProps, CardsPageState> {
-  constructor(props: CardsPageProps) {
-    super(props)
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: [],
-      searchValue: localStorage.getItem('searchValue')
-        ? localStorage.getItem('searchValue')
-        : '',
+  useEffect(() => {
+    const getAllProducts = async () => {
+      try {
+        setIsloading(true)
+        const response = await fetch('https://fakestoreapi.com/products')
+        const products = await response.json()
+        setAllProduct(products)
+        setIsloading(false)
+      } catch {
+        setError(true)
+      }
     }
-  }
+    getAllProducts()
+    setSearchValue(localStorage.getItem('searchValue') || '')
+  }, [])
 
-  componentDidMount() {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result as Product[],
-          })
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          })
-        },
-      )
-  }
-
-  componentWillUnmount(): void {
-    localStorage.setItem('searchValue', JSON.stringify(this.state.searchValue))
-  }
-
-  search(e: ChangeEvent<HTMLInputElement>) {
+  const search = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim().toLocaleLowerCase()
-    this.setState({
-      searchValue: value,
-    })
+    setSearchValue(value)
     localStorage.setItem('searchValue', value)
   }
 
-  render(): React.ReactNode {
-    const { error, isLoaded, items, searchValue } = this.state
-    if (error)
-      return <Layout>Download error, check your internet connection</Layout>
-    if (!isLoaded) return <Layout>Loading...</Layout>
-    return (
-      <Layout>
-        <InputSearch
-          value={searchValue || ''}
-          onChange={(e) => this.search(e)}
-        />
-        <div className={styles.cardWrapper}>
-          {items
-            .filter((item: Product) =>
-              item.title.toLocaleLowerCase().includes(searchValue || ''),
-            )
-            .map((item: Product) => (
-              <Card key={item.id} {...item} />
-            ))}
-        </div>
-      </Layout>
-    )
-  }
+  if (error)
+    return <Layout>Download error, check your internet connection</Layout>
+  if (isLoading) return <Layout>Loading...</Layout>
+  return (
+    <Layout>
+      <InputSearch value={searchValue || ''} onChange={(e) => search(e)} />
+      <div className={styles.cardWrapper}>
+        {allProducts
+          .filter((item: Product) =>
+            item.title.toLocaleLowerCase().includes(searchValue || ''),
+          )
+          .map((item: Product) => (
+            <Card key={item.id} {...item} />
+          ))}
+      </div>
+    </Layout>
+  )
 }
 
 export default CardsPage

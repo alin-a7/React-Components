@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { FC } from 'react'
 
 import styles from './Card.module.scss'
 
@@ -12,27 +12,31 @@ export interface Product {
   title: string
 }
 
-class Card extends Component<Product> {
-  render() {
-    return (
-      <div className={styles.card} data-testid="card">
-        <img
-          src={this.props.image}
-          alt={this.props.title}
-          className={styles.image}
-        />
-        <div className={styles.title}>{this.props.title}</div>
-        <div className={styles.description}>{this.props.description}</div>
-        <div className={styles.cardFooter}>
-          <div className={styles.rating}>
-            <div>Rate: {this.props.rating.rate}</div>
-            <div>Count: {this.props.rating.count}</div>
-          </div>
-          <div className={styles.price}>{this.props.price}$</div>
+const Card: FC<Product> = ({
+  description,
+  image,
+  price,
+  rating,
+  title,
+}) => {
+  return (
+    <div className={styles.card} data-testid="card">
+      <img
+        src={image}
+        alt={title}
+        className={styles.image}
+      />
+      <div className={styles.title}>{title}</div>
+      <div className={styles.description}>{description}</div>
+      <div className={styles.cardFooter}>
+        <div className={styles.rating}>
+          <div>Rate: {rating.rate}</div>
+          <div>Count: {rating.count}</div>
         </div>
+        <div className={styles.price}>{price}$</div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Card

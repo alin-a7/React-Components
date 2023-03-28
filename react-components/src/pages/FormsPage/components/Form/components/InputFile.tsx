@@ -16,6 +16,7 @@ class InputFile extends Component<InputSelectProps> {
           <div className={styles.title}>Upload file: {this.props.value}</div>
           <input
             type="file"
+            accept="image/*"
             className={styles.input}
             onChange={(event) => this.props.onChange(event)}
           />
