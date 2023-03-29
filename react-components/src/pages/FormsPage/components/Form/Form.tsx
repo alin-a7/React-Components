@@ -1,12 +1,12 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import InputText from './components/InputText'
-import InputDate from './components/InputDate'
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'
 import InputRadio from './components/InputRadio'
+import InputDate from './components/InputDate'
 import InputFile from './components/InputFile'
+import InputText from './components/InputText'
 
 import styles from './Form.module.scss'
 
@@ -19,39 +19,27 @@ export interface FormState {
   date: string
   language: string
   gender: string
-  file: string
+  file: FileList
   agreement: boolean
 }
 
 const Form: FC<FormProps> = ({ setCardArray }) => {
   const [succes, setSucces] = useState<boolean>()
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      text: '',
-      date: '',
-      language: '',
-      gender: '',
-      file: '',
-      agreement: false,
-    },
+  } = useForm<FormState>({
     mode: 'onBlur',
   })
 
   const formSubmit = (data: FormState) => {
+    setTimeout(() => setSucces(false), 2000)
     setCardArray((prev) => [...prev, data])
     setSucces(true)
-    setTimeout(() => setSucces(false), 2000)
+    reset()
   }
-
-  // const uploadFile = (event: ChangeEvent<HTMLInputElement>)=> {
-  //   const files = event.target.files
-  //   const file = files?.item(0) as File
-  //   this.setState({ file: URL.createObjectURL(file) })
-  // }
 
   return (
     <form
@@ -63,12 +51,9 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       <InputDate register={register} error={errors?.date} />
       <InputSelect register={register} error={errors?.language} />
       <InputRadio register={register} error={errors?.gender} />
-      {/* <InputFile
-          value={this.state.file as string}
-          error={this.state.fileError}
-          onChange={this.uploadFile.bind(this)}
-        /> */}
+      <InputFile register={register} error={errors?.file} />
       <InputCheckbox register={register} error={errors?.agreement} />
+
       <button type="submit" className={styles.button}>
         Create card!
       </button>

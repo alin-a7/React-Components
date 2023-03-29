@@ -1,32 +1,35 @@
-import { ChangeEventHandler, Component } from 'react'
+import { FC, FormEvent, useState } from 'react'
+
+import { InputsProps } from './constant'
 
 import styles from '../Form.module.scss'
 
-interface InputSelectProps {
-  onChange: ChangeEventHandler<HTMLInputElement>
-  value?: string
-  error: boolean
-}
+const InputFile: FC<InputsProps> = ({ error, register }) => {
+  const [value, setValue] = useState<string>('')
 
-class InputFile extends Component<InputSelectProps> {
-  render() {
-    return (
-      <>
-        <label data-testid="file" className={styles.fileInput}>
-          <div className={styles.title}>Upload file: {this.props.value}</div>
-          <input
-            type="file"
-            accept="image/*"
-            className={styles.input}
-            onChange={(event) => this.props.onChange(event)}
-          />
-        </label>
-        {this.props.error && (
-          <div className={styles.error}>The field is required</div>
-        )}
-      </>
-    )
+  const getImageName = (event: FormEvent) => {
+    const files = (event.target as HTMLInputElement).files
+    const file = files?.item(0) as File
+    setValue(file.name)
   }
+
+  return (
+    <>
+      <label data-testid="file" className={styles.fileInput}>
+        <div className={styles.title}>Upload file: {value}</div>
+        <input
+          type="file"
+          accept="image/*"
+          {...register('file', {
+            required: 'The field is required',
+          })}
+          className={styles.input}
+          onInput={(event) => getImageName(event)}
+        />
+      </label>
+      {error && <div className={styles.error}>{error.message}</div>}
+    </>
+  )
 }
 
 export default InputFile
