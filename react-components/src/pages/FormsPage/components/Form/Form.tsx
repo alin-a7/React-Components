@@ -68,13 +68,7 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
           error={this.state.fileError}
           onChange={this.uploadFile.bind(this)}
         /> */}
-      {/* <InputCheckbox
-          checked={this.state.agreement}
-          error={this.state.agreementError}
-          onChange={(event) =>
-            this.setState({ agreement: event.target.checked })
-          }
-        /> */}
+      <InputCheckbox register={register} error={errors?.agreement} />
       <button type="submit" className={styles.button}>
         Create card!
       </button>

@@ -1,4 +1,4 @@
-import { Component, FC } from 'react'
+import { FC } from 'react'
 
 import { InputsProps } from './constant'
 
@@ -12,7 +12,7 @@ const InputRadio: FC<InputsProps> = ({ error, register }) => {
         <InputRadioItem itemValue="male" register={register} />
         <InputRadioItem itemValue="female" register={register} />
       </label>
-      {error && <div className={styles.error}>The field is required</div>}
+      {error && <div className={styles.error}>{error.message}</div>}
     </>
   )
 }
