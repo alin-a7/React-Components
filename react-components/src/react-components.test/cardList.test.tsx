@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 
-import Card from '../components/Card'
+import Card from '../pages/CardsPage/components/Card'
 
 import { allProducts } from '../constants/allProducts'
 

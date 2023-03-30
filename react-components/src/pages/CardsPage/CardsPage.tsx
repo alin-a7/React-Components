@@ -1,9 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import Card from '../../components/Card'
+import Card from './components/Card'
 import Layout from '../../components/Layout'
-import { Product } from '../../components/Card/Card'
-import InputSearch from '../../components/InputSearch'
+import { Product } from './components/Card/Card'
+import InputSearch from './components/InputSearch'
 
 import styles from './CardsPage.module.scss'
 

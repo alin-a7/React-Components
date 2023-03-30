@@ -10,6 +10,7 @@ const InputFile: FC<InputsProps> = ({ error, register }) => {
       <input
         type="file"
         accept="image/*"
+        data-testid="file"
         {...register('file', {
           required: 'The field is required',
         })}
