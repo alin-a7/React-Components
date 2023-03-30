@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 import Layout from '../../components/Layout'
 
-import CardsList from './components/CardsList'
 import { FormState } from './components/Form/Form'
+import CardsList from './components/CardsList'
 import Form from './components/Form'
 
 import styles from './FormsPage.module.scss'

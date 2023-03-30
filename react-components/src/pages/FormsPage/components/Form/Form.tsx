@@ -35,10 +35,11 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
   })
 
   const formSubmit = (data: FormState) => {
-    setTimeout(() => setSucces(false), 2000)
+    setTimeout(() => {
+      setSucces(false), reset()
+    }, 2000)
     setCardArray((prev) => [...prev, data])
     setSucces(true)
-    reset()
   }
 
   return (
