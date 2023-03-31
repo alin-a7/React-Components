@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { nameValidation } from '../helpers'
+import { nameValidation } from '../utils'
 import { InputsProps } from './constant'
 
 import styles from '../Form.module.scss'

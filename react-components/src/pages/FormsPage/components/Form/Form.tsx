@@ -1,17 +1,20 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { ICard } from '../../FormsPage'
+
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'
 import InputRadio from './components/InputRadio'
 import InputDate from './components/InputDate'
 import InputFile from './components/InputFile'
 import InputText from './components/InputText'
+import { getImage } from './utils'
 
 import styles from './Form.module.scss'
 
 interface FormProps {
-  setCardArray: Dispatch<SetStateAction<FormState[]>>
+  setCardArray: Dispatch<SetStateAction<ICard[]>>
 }
 
 export interface FormState {
@@ -35,11 +38,11 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
   })
 
   const formSubmit = (data: FormState) => {
-    setTimeout(() => {
-      setSucces(false), reset()
-    }, 2000)
-    setCardArray((prev) => [...prev, data])
+    const card = { ...data, file: getImage(data.file) }
+    setCardArray((prev) => [...prev, card])
     setSucces(true)
+    reset()
+    setTimeout(() => setSucces(false), 2000)
   }
 
   return (

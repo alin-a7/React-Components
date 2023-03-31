@@ -1,24 +1,19 @@
 import { FC } from 'react'
 
-import { FormState } from '../Form/Form'
+import { ICard } from '../../FormsPage'
 
 import styles from './CardsList.module.scss'
 
 interface CardsListProps {
-  cardArray: FormState[]
+  cardArray: ICard[]
 }
 
 const CardsList: FC<CardsListProps> = ({ cardArray }) => {
-  const getImage = (files: FileList) => {
-    const file = files?.item(0) as File
-    return file ? URL.createObjectURL(file) : ''
-  }
-
   return (
     <div className={styles.cardWrapper}>
       {cardArray.map(({ text, date, language, gender, file }, index) => (
-        <div key={index} className={styles.card}>
-          <img className={styles.image} src={getImage(file)} alt={text} />
+        <div key={index} className={styles.card} data-testid="form-card">
+          <img className={styles.image} src={file} alt={text} />
           <div className={styles.name}>Name: {text}</div>
           <div>Birthday: {date}</div>
           <div>Language: {language}</div>

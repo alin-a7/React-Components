@@ -1,4 +1,4 @@
-import { nameValidation } from '../pages/FormsPage/components/Form/helpers';
+import { nameValidation } from '../pages/FormsPage/components/Form/utils';
 
 
 describe('Name', () => {
