@@ -61,6 +61,7 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       <button type="submit" className={styles.button}>
         Create card!
       </button>
+      
       {succes && (
         <div className={styles.succes}>Form completed successfully!</div>
       )}
