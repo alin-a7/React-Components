@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 
-import { Product, Person } from './components/Card/Card'
+import { Person } from './components/Card/Card'
 import InputSearch from './components/InputSearch'
 import Card from './components/Card'
 import { useCardsPage } from './hooks'

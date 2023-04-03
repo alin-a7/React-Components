@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import { Product, Person } from '../components/Card/Card'
+import { Person } from '../components/Card/Card'
 
 export const useCardsPage = () => {
   const [error, setError] = useState<boolean>(false)
@@ -30,10 +30,6 @@ export const useCardsPage = () => {
     setSearchValue(value)
     localStorage.setItem('searchValue', value)
   }
-
-  // const filterCards = allProducts.filter((item: Person) =>
-  //   item.name.toLocaleLowerCase().includes(searchValue),
-  // )
 
   return { error, isLoading, allPerson, searchValue, search }
 }
