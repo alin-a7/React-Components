@@ -8,7 +8,7 @@ type LayotProps = {
   children: ReactNode
 }
 
-const Layout: FC<LayotProps> = ({children}) => {
+const Layout: FC<LayotProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Menu />

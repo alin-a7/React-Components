@@ -1,6 +1,8 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 
+import Modal from '../../../../components/Modal'
+import { useModal } from '../../../../hooks'
 import { ICard } from '../../FormsPage'
 
 import InputCheckbox from './components/InputCheckbox'
@@ -27,7 +29,7 @@ export interface FormState {
 }
 
 const Form: FC<FormProps> = ({ setCardArray }) => {
-  const [succes, setSucces] = useState<boolean>()
+  const { isVisible, open: openModal, close: closeModal } = useModal()
   const {
     reset,
     register,
@@ -40,9 +42,9 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
   const formSubmit = (data: FormState) => {
     const card = { ...data, file: getImage(data.file) }
     setCardArray((prev) => [...prev, card])
-    setSucces(true)
+    openModal()
     reset()
-    setTimeout(() => setSucces(false), 2000)
+    // setTimeout(() => setSucces(false), 2000)
   }
 
   return (
@@ -61,9 +63,8 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       <button type="submit" className={styles.button}>
         Create card!
       </button>
-      
-      {succes && (
-        <div className={styles.succes}>Form completed successfully!</div>
+      {isVisible &&  (
+        <Modal close={closeModal} content={<div className={styles.succes}>Form completed successfully!</div>}/>
       )}
     </form>
   )
