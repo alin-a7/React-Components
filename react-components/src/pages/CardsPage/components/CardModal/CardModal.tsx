@@ -3,17 +3,7 @@ import { FC } from 'react'
 import { useModal } from '../../../../hooks'
 import Modal from '../../../../components/Modal'
 
-import styles from './Card.module.scss'
-
-export interface Product {
-  category: string
-  description: string
-  id: number
-  image: string
-  price: number
-  rating: { rate: number; count: number }
-  title: string
-}
+import styles from './CardModal.module.scss'
 
 export interface Person {
   id: number
@@ -36,7 +26,7 @@ export interface Person {
   created: string
 }
 
-const Card: FC<Person> = (person) => {
+const CardModal: FC<Person> = (person) => {
   const { open, close, isVisible } = useModal()
 
   const { name, image } = person
@@ -53,4 +43,4 @@ const Card: FC<Person> = (person) => {
   )
 }
 
-export default Card
+export default CardModal

@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 
-import { Product } from './components/Card/Card'
+import { Product, Person } from './components/Card/Card'
 import InputSearch from './components/InputSearch'
 import Card from './components/Card'
 import { useCardsPage } from './hooks'
@@ -8,21 +8,27 @@ import { useCardsPage } from './hooks'
 import styles from './CardsPage.module.scss'
 
 const CardsPage = () => {
-  const { error, isLoading, searchValue, search, filterCards } = useCardsPage()
+  const { error, isLoading, searchValue, search, allPerson } = useCardsPage()
 
-  if (error)
-    return <Layout>Download error, check your internet connection</Layout>
-  if (isLoading) return <Layout>Loading...</Layout>
   return (
     <Layout>
       <InputSearch value={searchValue} onChange={(e) => search(e)} />
-      <div className={styles.cardWrapper}>
-        {filterCards[0] ? (
-          filterCards.map((item: Product) => <Card key={item.id} {...item} />)
-        ) : (
-          <div className={styles.notFound}>No cards found...</div>
-        )}
-      </div>
+      {error && (
+        <div className={styles.notFound}>
+          Download error, check your internet connection
+        </div>
+      )}
+      {isLoading ? (
+        <div className={styles.notFound}>Loading...</div>
+      ) : allPerson[0] ? (
+        <div className={styles.cardWrapper}>
+          {allPerson.map((item: Person) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </div>
+      ) : (
+        !error && <div className={styles.notFound}>No cards found...</div>
+      )}
     </Layout>
   )
 }

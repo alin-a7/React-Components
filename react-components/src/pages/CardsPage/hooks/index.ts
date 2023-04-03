@@ -1,23 +1,25 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import { Product } from '../components/Card/Card'
+import { Product, Person } from '../components/Card/Card'
 
 export const useCardsPage = () => {
   const [error, setError] = useState<boolean>(false)
-  const [isLoading, setIsloading] = useState<boolean>(false)
-  const [allProducts, setAllProduct] = useState<Product[]>([])
-  const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('searchValue') || '')
+  const [isLoading, setIsloading] = useState<boolean>(true)
+  const [allPerson, setAllPerson] = useState<Person[]>([])
+  const [searchValue, setSearchValue] = useState<string>(
+    localStorage.getItem('searchValue') || '',
+  )
 
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        setIsloading(true)
-        const response = await fetch('https://fakestoreapi.com/products')
-        const products = await response.json()
-        setAllProduct(products)
-        setIsloading(false)
+        const response = await fetch('https://rickandmortyapi.com/api/character')
+        const products: Person[] = (await response.json()).results
+        setAllPerson(products)
       } catch {
         setError(true)
+      } finally {
+        setIsloading(false)
       }
     }
     getAllProducts()
@@ -29,9 +31,9 @@ export const useCardsPage = () => {
     localStorage.setItem('searchValue', value)
   }
 
-  const filterCards = allProducts.filter((item: Product) =>
-    item.title.toLocaleLowerCase().includes(searchValue),
-  )
+  // const filterCards = allProducts.filter((item: Person) =>
+  //   item.name.toLocaleLowerCase().includes(searchValue),
+  // )
 
-  return { error, isLoading, allProducts, searchValue, search, filterCards }
+  return { error, isLoading, allPerson, searchValue, search }
 }
