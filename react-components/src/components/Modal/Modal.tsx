@@ -11,7 +11,7 @@ const Modal: FC<ModalProps> = ({ content, close }) => {
   return (
     <>
       <div className={styles.childrenBlock}>{content}</div>
-      <div className={styles.modal} onClick={() => close()}></div>
+      <div className={styles.blackout} onClick={() => close()}></div>
     </>
   )
 }

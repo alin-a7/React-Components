@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "resolveJsonModule": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "vite-plugin-svgr/client"]
   },
   "include": ["./src/**/*", "styled.d.ts"]
 }

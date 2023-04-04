@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
 import { Person } from '../components/Card/Card'
 
@@ -9,6 +9,17 @@ export const useCardsPage = () => {
   const [searchValue, setSearchValue] = useState<string>(
     localStorage.getItem('searchValue') || '',
   )
+  const searchRef = useRef<string>()
+
+  useEffect(() => {
+    searchRef.current = searchValue
+  }, [searchValue])
+
+  useEffect(() => {
+    return () => {
+      localStorage.setItem('searchValue', searchRef.current || '')
+    }
+  }, [])
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -28,7 +39,6 @@ export const useCardsPage = () => {
   const search = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim().toLocaleLowerCase()
     setSearchValue(value)
-    localStorage.setItem('searchValue', value)
   }
 
   return { error, isLoading, allPerson, searchValue, search }

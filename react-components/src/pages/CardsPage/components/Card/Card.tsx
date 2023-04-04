@@ -35,7 +35,12 @@ const Card: FC<Person> = (person) => {
 
   return (
     <>
-      {isVisible && <Modal close={close} content={<CardModal {...person}/>} />}
+      {isVisible && (
+        <Modal
+          close={close}
+          content={<CardModal {...person} close={close} />}
+        />
+      )}
 
       <div className={styles.card} data-testid="card" onClick={() => open()}>
         <img src={image} alt={name} className={styles.image} />
