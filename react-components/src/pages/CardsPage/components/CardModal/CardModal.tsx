@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { ReactComponent as CancelIcon } from '../../../../assets/cancel.svg'
+import { errorImg } from '../../utils'
 import { Person } from '../Card/Card'
 
 import styles from './CardModal.module.scss'
@@ -21,7 +22,12 @@ const CardModal: FC<CardModalProps> = ({
   return (
     <div className={styles.card}>
       <CancelIcon className={styles.cancel} onClick={() => close()} />
-      <img src={image} alt={name} className={styles.image} />
+      <img
+        src={image}
+        alt={name}
+        className={styles.image}
+        onError={(e) => errorImg(e)}
+      />
       <div className={styles.info}>
         <div className={styles.title}>{name}</div>
         <div className={styles.infoItem}>Species: {species}</div>

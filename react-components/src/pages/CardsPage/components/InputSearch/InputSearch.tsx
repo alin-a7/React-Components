@@ -17,7 +17,7 @@ const InputSearch: FC<Search> = ({ searchCharacter, value }) => {
 
   useEffect(() => {
     setValue('name', value || '')
-  }, [])
+  }, [value, setValue])
 
   const submit = (data: FormState) => {
     searchCharacter(data.name)

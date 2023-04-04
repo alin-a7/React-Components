@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { useModal } from '../../../../hooks'
 import Modal from '../../../../components/Modal'
+import { errorImg } from '../../utils'
 
 import CardModal from '../CardModal'
 
@@ -43,7 +44,12 @@ const Card: FC<Person> = (person) => {
       )}
 
       <div className={styles.card} data-testid="card" onClick={() => open()}>
-        <img src={image} alt={name} className={styles.image} />
+        <img
+          src={image}
+          alt={name}
+          className={styles.image}
+          onError={(e) => errorImg(e)}
+        />
         <div className={styles.title}>{name}</div>
       </div>
     </>

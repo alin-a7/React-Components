@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Person } from '../components/Card/Card'
 import { getURL } from '../utils'
@@ -14,6 +14,7 @@ export const useCardsPage = () => {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
+        setIsloading(true)
         const response = await fetch(getURL(searchValue))
         const products: Person[] = (await response.json()).results
         setAllPerson(products)
