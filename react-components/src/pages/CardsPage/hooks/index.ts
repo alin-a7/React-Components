@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
 import { Person } from '../components/Card/Card'
+import { getURL } from '../utils'
 
 export const useCardsPage = () => {
   const [error, setError] = useState<boolean>(false)
@@ -9,22 +10,11 @@ export const useCardsPage = () => {
   const [searchValue, setSearchValue] = useState<string>(
     localStorage.getItem('searchValue') || '',
   )
-  const searchRef = useRef<string>()
-
-  useEffect(() => {
-    searchRef.current = searchValue
-  }, [searchValue])
-
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('searchValue', searchRef.current || '')
-    }
-  }, [])
 
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const response = await fetch('https://rickandmortyapi.com/api/character')
+        const response = await fetch(getURL(searchValue))
         const products: Person[] = (await response.json()).results
         setAllPerson(products)
       } catch {
@@ -34,12 +24,12 @@ export const useCardsPage = () => {
       }
     }
     getAllProducts()
-  }, [])
+  }, [searchValue])
 
-  const search = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.trim().toLocaleLowerCase()
-    setSearchValue(value)
+  const searchCharacter = (name: string) => {
+    setSearchValue(name)
+    localStorage.setItem('searchValue', name)
   }
 
-  return { error, isLoading, allPerson, searchValue, search }
+  return { error, isLoading, allPerson, searchValue, searchCharacter }
 }

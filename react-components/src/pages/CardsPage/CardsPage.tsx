@@ -8,11 +8,12 @@ import { useCardsPage } from './hooks'
 import styles from './CardsPage.module.scss'
 
 const CardsPage = () => {
-  const { error, isLoading, searchValue, search, allPerson } = useCardsPage()
+  const { error, isLoading, searchValue, searchCharacter, allPerson } =
+    useCardsPage()
 
   return (
     <Layout>
-      <InputSearch value={searchValue} onChange={(e) => search(e)} />
+      <InputSearch value={searchValue} searchCharacter={searchCharacter} />
       {error && (
         <div className={styles.notFound}>
           Download error, check your internet connection
@@ -20,7 +21,7 @@ const CardsPage = () => {
       )}
       {isLoading ? (
         <div className={styles.notFound}>Loading...</div>
-      ) : allPerson[0] ? (
+      ) : allPerson?.length ? (
         <div className={styles.cardWrapper}>
           {allPerson.map((item: Person) => (
             <Card key={item.id} {...item} />

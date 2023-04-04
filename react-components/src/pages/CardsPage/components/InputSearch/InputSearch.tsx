@@ -1,24 +1,41 @@
-import { ChangeEventHandler, FC } from 'react'
+import { FC, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 
 import styles from './InputSearch.module.scss'
 
 interface Search {
-  onChange: ChangeEventHandler<HTMLInputElement>
+  searchCharacter: (name: string) => void
   value?: string
 }
 
-const InputSearch: FC<Search> = ({ onChange, value }) => {
+interface FormState {
+  name: string
+}
+
+const InputSearch: FC<Search> = ({ searchCharacter, value }) => {
+  const { register, handleSubmit, setValue } = useForm<FormState>()
+
+  useEffect(() => {
+    setValue('name', value || '')
+  }, [])
+
+  const submit = (data: FormState) => {
+    searchCharacter(data.name)
+  }
+
   return (
-    <div className={styles.wrapper}>
+    <form onSubmit={handleSubmit(submit)} className={styles.wrapper}>
       <img src="../../src/assets/search.svg" className={styles.searchIcon} />
       <input
         type="search"
         className={styles.searchInput}
-        placeholder="Search products!"
-        onChange={onChange}
-        value={value}
+        placeholder="Search characters!"
+        {...register('name')}
       />
-    </div>
+      <button type="submit" className={styles.searcButton}>
+        Search!
+      </button>
+    </form>
   )
 }
 export default InputSearch

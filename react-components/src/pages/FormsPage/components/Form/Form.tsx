@@ -44,7 +44,6 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
     setCardArray((prev) => [...prev, card])
     openModal()
     reset()
-    // setTimeout(() => setSucces(false), 2000)
   }
 
   return (

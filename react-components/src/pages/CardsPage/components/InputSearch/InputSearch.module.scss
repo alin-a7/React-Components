@@ -10,8 +10,7 @@
 
   padding: 0 15px 0 30px;
   height: 40px;
-  width: 100%;
-  margin-bottom: 15px;
+  width: 88%;
 
   &:focus {
     border: 2px solid white;
@@ -30,8 +29,11 @@
 
 .wrapper {
   align-items: center;
+  justify-content: space-between;
   display: flex;
+  width: 100%;
   position: relative;
+  padding-bottom: 25px;
 }
 
 .searchIcon {
@@ -41,4 +43,8 @@
   position: absolute;
   width: 20px;
   height: 20px;
+}
+
+.searcButton {
+  width: 10%;
 }
