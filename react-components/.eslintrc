@@ -27,8 +27,9 @@
       }
     ],
     "no-use-before-define": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "parser": "@typescript-eslint/parser",
@@ -56,7 +57,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "files": ["**/*.test.ts", "**/*.test.tsx", "**/*.test.js"],
       "env": {
         "jest": true
       }
