@@ -9,24 +9,24 @@ import CardModal from '../CardModal'
 import styles from './Card.module.scss'
 
 export interface Person {
-  id: number
+  id?: number
   name: string
-  status: string
+  status?: string
   species: string
-  type: string
+  type?: string
   gender: string
-  origin: {
+  origin?: {
     name: string
     url: string
   }
   location: {
     name: string
-    url: string
+    url?: string
   }
   image: string
   episode: string[]
-  url: string
-  created: string
+  url?: string
+  created?: string
 }
 
 const Card: FC<Person> = (person) => {

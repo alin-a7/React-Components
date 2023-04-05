@@ -11,7 +11,7 @@ describe('InputSearch component', () => {
     const { getByPlaceholderText } = render(
       <InputSearch searchCharacter={() => null} />,
     )
-    const input = getByPlaceholderText('Search products!') as HTMLInputElement
+    const input = getByPlaceholderText('Search characters!') as HTMLInputElement
     fireEvent.change(input, { target: { value: 'testValue' } })
     expect(input.value).toBe('testValue')
   })
