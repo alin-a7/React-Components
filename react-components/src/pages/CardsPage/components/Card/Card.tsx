@@ -1,49 +1,21 @@
 import { FC } from 'react'
 
-import { useModal } from '../../../../hooks'
-import Modal from '../../../../components/Modal'
 import { errorImg } from '../../utils'
-
-import CardModal from '../CardModal'
+import { Character } from '../../hooks'
 
 import styles from './Card.module.scss'
 
-export interface Person {
-  id?: number
-  name: string
-  status?: string
-  species: string
-  type?: string
-  gender: string
-  origin?: {
-    name: string
-    url: string
-  }
-  location: {
-    name: string
-    url?: string
-  }
-  image: string
-  episode: string[]
-  url?: string
-  created?: string
+interface CardProps extends Character {
+  getCharacter: (id: number) => Promise<void>
 }
 
-const Card: FC<Person> = (person) => {
-  const { open, close, isVisible } = useModal()
-
-  const { name, image } = person
-
+const Card: FC<CardProps> = ({ id, name, image, getCharacter }) => {
   return (
-    <>
-      {isVisible && (
-        <Modal
-          close={close}
-          content={<CardModal {...person} close={close} />}
-        />
-      )}
-
-      <div className={styles.card} data-testid="card" onClick={() => open()}>
+      <div
+        className={styles.card}
+        data-testid="card"
+        onClick={() => getCharacter(id as number)}
+      >
         <img
           src={image}
           alt={name}
@@ -52,7 +24,6 @@ const Card: FC<Person> = (person) => {
         />
         <div className={styles.title}>{name}</div>
       </div>
-    </>
   )
 }
 

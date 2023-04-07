@@ -1,34 +1,41 @@
 import Layout from '../../components/Layout'
+import Modal from '../../components/Modal'
 
-import { Person } from './components/Card/Card'
+import { getSelectCharacterInfo, useCardsPage } from './hooks'
 import InputSearch from './components/InputSearch'
-import Card from './components/Card'
-import { useCardsPage } from './hooks'
+import CardModal from './components/CardModal'
 
 import styles from './CardsPage.module.scss'
+import CardList from './components/CardList'
 
 const CardsPage = () => {
   const { error, isLoading, searchValue, searchCharacter, allPerson } =
     useCardsPage()
 
+  const { isVisible, closeModal, selectCharacter, getCharacter } =
+    getSelectCharacterInfo()
+
   return (
     <Layout>
       <InputSearch value={searchValue} searchCharacter={searchCharacter} />
-      {error && (
+
+      {error ? (
         <div className={styles.notFound}>
           Download error, check your internet connection
         </div>
-      )}
-      {isLoading ? (
-        <div className={styles.notFound}>Loading...</div>
-      ) : allPerson?.length ? (
-        <div className={styles.cardWrapper}>
-          {allPerson.map((item: Person) => (
-            <Card key={item.id} {...item} />
-          ))}
-        </div>
       ) : (
-        !error && <div className={styles.notFound}>No cards found...</div>
+        <CardList
+          allPerson={allPerson}
+          isLoading={isLoading}
+          getCharacter={getCharacter}
+        />
+      )}
+
+      {isVisible && (
+        <Modal
+          close={closeModal}
+          content={<CardModal {...selectCharacter} close={closeModal} />}
+        />
       )}
     </Layout>
   )

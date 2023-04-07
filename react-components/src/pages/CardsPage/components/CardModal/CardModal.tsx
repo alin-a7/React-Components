@@ -2,11 +2,11 @@ import { FC } from 'react'
 
 import { ReactComponent as CancelIcon } from '../../../../assets/cancel.svg'
 import { errorImg } from '../../utils'
-import { Person } from '../Card/Card'
+import { Character } from '../../hooks'
 
 import styles from './CardModal.module.scss'
 
-interface CardModalProps extends Person {
+interface CardModalProps extends Character {
   close: () => void
 }
 
@@ -32,9 +32,9 @@ const CardModal: FC<CardModalProps> = ({
         <div className={styles.title}>{name}</div>
         <div className={styles.infoItem}>Species: {species}</div>
         <div className={styles.infoItem}>Gender: {gender}</div>
-        <div className={styles.infoItem}>Location: {location.name}</div>
+        <div className={styles.infoItem}>Location: {location?.name}</div>
         <div className={styles.infoItem}>
-          Number of episodes: {episode.length}
+          Number of episodes: {episode?.length}
         </div>
       </div>
     </div>
