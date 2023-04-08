@@ -4,11 +4,11 @@ import Form from '../pages/FormsPage/components/Form'
 
 describe('Form component', () => {
   it('must be rendered successfully', () => {
-    render(<Form createCard={() => null} />)
+    render(<Form setCardArray={() => null} />)
   })
 
   it('must be rendered form correctly', () => {
-    const { getByTestId } = render(<Form createCard={() => null} />)
+    const { getByTestId } = render(<Form setCardArray={() => null} />)
     const form = getByTestId('form')
     expect(form).toBeInTheDocument()
   })

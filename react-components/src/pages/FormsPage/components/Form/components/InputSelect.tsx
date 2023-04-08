@@ -1,38 +1,31 @@
-import { Component, RefObject } from 'react'
+import { FC } from 'react'
 
-import { OPTIONS } from './constant'
+import { InputsProps, OPTIONS } from './constant'
 
 import styles from '../Form.module.scss'
 
-interface InputSelectProps {
-  error: boolean
-  refs?: RefObject<HTMLSelectElement>
-}
-
-class InputSelect extends Component<InputSelectProps> {
-  render() {
-    return (
-      <>
-        <label className={styles.selectInput}>
-          Select a language:
-          <select
-            ref={this.props.refs}
-            data-testid="select"
-            className={styles.selectItems}
-          >
-            {OPTIONS.map(({ value, label }, index) => (
-              <option key={index} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-        {this.props.error && (
-          <div className={styles.error}>The field is required</div>
-        )}
-      </>
-    )
-  }
+const InputSelect: FC<InputsProps> = ({ error, register }) => {
+  return (
+    <>
+      <label className={styles.selectInput}>
+        Select a language:
+        <select
+          data-testid="select"
+          className={styles.selectItems}
+          {...register('language', {
+            required: 'The field is required',
+          })}
+        >
+          {OPTIONS.map(({ value, label }, index) => (
+            <option key={index} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </label>
+      {error && <div className={styles.error}>{error.message}</div>}
+    </>
+  )
 }
 
 export default InputSelect

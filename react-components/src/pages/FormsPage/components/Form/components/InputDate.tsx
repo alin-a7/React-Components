@@ -4,21 +4,19 @@ import { InputsProps } from './constant'
 
 import styles from '../Form.module.scss'
 
-const InputFile: FC<InputsProps> = ({ error, register }) => {
+const InputDate: FC<InputsProps> = ({ error, register }) => {
   return (
     <>
       <input
-        type="file"
-        accept="image/*"
-        data-testid="file"
-        {...register('file', {
+        {...register('date', {
           required: 'The field is required',
         })}
-        className={styles.fileInput}
+        type="date"
+        className={styles.textInput}
       />
       {error && <div className={styles.error}>{error.message}</div>}
     </>
   )
 }
 
-export default InputFile
+export default InputDate

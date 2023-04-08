@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react'
 
-import InputSearch from '../components/InputSearch'
+import InputSearch from '../pages/CardsPage/components/InputSearch'
 
 describe('InputSearch component', () => {
   afterEach(() => {

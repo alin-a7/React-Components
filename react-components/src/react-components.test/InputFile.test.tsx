@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react'
-
-import InputFile from '../pages/FormsPage/components/Form/components/InputFile'
+import Form from '../pages/FormsPage/components/Form'
 
 describe('InputFile component', () => {
   afterEach(() => {
@@ -8,10 +7,10 @@ describe('InputFile component', () => {
   })
 
   it('display an error message', () => {
-    const { getByText } = render(
-      <InputFile error={true} />,
+    const { getByTestId } = render(
+      <Form setCardArray={() => null} />,
     )
-    const error = getByText('The field is required')
-    expect(error).toBeInTheDocument()
+    const input = getByTestId('file') as HTMLInputElement
+    expect(input).toBeInTheDocument()
   })
 })

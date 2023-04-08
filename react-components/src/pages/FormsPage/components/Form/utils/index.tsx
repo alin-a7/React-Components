@@ -11,3 +11,10 @@ export const nameValidation = (name: string) => {
         lastName[0] === lastName[0].toUpperCase()
     : false
 }
+
+export const getImage = (files: FileList) => {
+  const file = files?.item(0) as File
+  return file ? URL.createObjectURL(file) : ''
+}
+
+

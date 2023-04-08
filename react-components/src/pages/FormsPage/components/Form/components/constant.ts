@@ -1,3 +1,6 @@
+import { FieldError, UseFormRegister } from "react-hook-form"
+import { FormState } from "../Form"
+
 interface Ioption {
   value: string
   label: string
@@ -24,3 +27,8 @@ export const OPTIONS: Ioption[] = [
     label: 'German',
   },
 ]
+
+export interface InputsProps {
+  error?: FieldError | undefined
+  register: UseFormRegister<FormState>
+}

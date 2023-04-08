@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState } from 'react'
 
 import Layout from '../../components/Layout'
 
@@ -13,35 +13,20 @@ export interface ICard {
   language: string
   gender: string
   file: string
+  agreement: boolean
 }
 
-interface FormsPageState {
-  cardArray: ICard[]
-}
+const FormsPage = ()=> {
+  const [cardArray, setCardArray] = useState<ICard[]>([])
 
-class FormsPage extends Component<object, FormsPageState> {
-  constructor(props: FormsPageState) {
-    super(props)
-    this.state = {
-      cardArray: [],
-    }
-    this.createCard = this.createCard.bind(this)
-  }
-
-  createCard(card: ICard){
-    this.setState({ cardArray: [...this.state.cardArray, card] })
-  }
-
-  render() {
     return (
       <Layout>
         <div className={styles.wrapper}>
-          <Form createCard={this.createCard}/>
-          <CardsList cardArray={this.state.cardArray}/>
+          <Form setCardArray={setCardArray}/>
+          <CardsList cardArray={cardArray}/>
         </div>
       </Layout>
     )
-  }
 }
 
 export default FormsPage

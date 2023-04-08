@@ -1,59 +1,39 @@
-import { ChangeEventHandler, Component, RefObject } from 'react'
+import { FC } from 'react'
+
+import { InputsProps } from './constant'
 
 import styles from '../Form.module.scss'
 
-interface InputRadioProps {
-  onChange: ChangeEventHandler<HTMLInputElement>
-  value: string
-  error?: boolean
-  refs?: RefObject<HTMLInputElement>
+const InputRadio: FC<InputsProps> = ({ error, register }) => {
+  return (
+    <>
+      <label className={styles.selectInput}>
+        Select a gender:
+        <InputRadioItem itemValue="male" register={register} />
+        <InputRadioItem itemValue="female" register={register} />
+      </label>
+      {error && <div className={styles.error}>{error.message}</div>}
+    </>
+  )
 }
 
-class InputRadio extends Component<InputRadioProps> {
-  render() {
-    return (
-      <>
-        <label className={styles.selectInput}>
-          Select a gender:
-          <InputRadioItem
-            refs={this.props.refs}
-            value={this.props.value}
-            onChange={this.props.onChange}
-            itemValue="male"
-          />
-          <InputRadioItem
-            value={this.props.value}
-            onChange={this.props.onChange}
-            itemValue="female"
-          />
-        </label>
-        {this.props.error && (
-          <div className={styles.error}>The field is required</div>
-        )}
-      </>
-    )
-  }
-}
-
-interface InputRadioItemProps extends InputRadioProps {
+interface InputRadioItemProps extends InputsProps {
   itemValue: string
 }
 
-class InputRadioItem extends Component<InputRadioItemProps> {
-  render() {
-    return (
-      <label className={styles.radioLabel}>
-        {this.props.itemValue}
-        <input
-          ref={this.props.refs}
-          type="radio"
-          value={this.props.itemValue}
-          checked={this.props.value === this.props.itemValue ? true : false}
-          onChange={this.props.onChange}
-        />
-      </label>
-    )
-  }
+const InputRadioItem: FC<InputRadioItemProps> = ({ itemValue, register }) => {
+  return (
+    <label className={styles.radioLabel}>
+      {itemValue}
+      <input
+        type="radio"
+        value={itemValue}
+        {...register('gender', {
+          required: 'The field is required',
+        })}
+      />
+    </label>
+  )
 }
 
 export default InputRadio

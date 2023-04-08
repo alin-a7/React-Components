@@ -1,30 +1,25 @@
-import { Component, RefObject } from 'react'
+import { FC } from 'react'
+
+import { InputsProps } from './constant'
 
 import styles from '../Form.module.scss'
 
-interface InputCheckboxProps {
-  error: boolean
-  refs?: RefObject<HTMLInputElement>
-}
-
-class InputCheckbox extends Component<InputCheckboxProps> {
-  render() {
-    return (
-      <>
-        <label className={styles.checkbox}>
-          <input
-            ref={this.props.refs}
-            type="checkbox"
-            data-testid="checkbox"
-          />
-          <span>I consent to my personal data</span>
-        </label>
-        {this.props.error && (
-          <div className={styles.error}>The field is required</div>
-        )}
-      </>
-    )
-  }
+const InputCheckbox: FC<InputsProps> = ({ error, register }) => {
+  return (
+    <>
+      <label className={styles.checkbox}>
+        <input
+          type="checkbox"
+          data-testid="checkbox"
+          {...register('agreement', {
+            required: 'The field is required',
+          })}
+        />
+        <span>I consent to my personal data</span>
+      </label>
+      {error && <div className={styles.error}>{error.message}</div>}
+    </>
+  )
 }
 
 export default InputCheckbox
