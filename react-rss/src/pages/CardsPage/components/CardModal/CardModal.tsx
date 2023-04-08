@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import { ReactComponent as CancelIcon } from '../../../../assets/cancel.svg'
-import { errorImg } from '../../utils'
 import { Character } from '../../hooks'
 
 import styles from './CardModal.module.scss'
@@ -26,7 +25,6 @@ const CardModal: FC<CardModalProps> = ({
         src={image}
         alt={name}
         className={styles.image}
-        onError={(e) => errorImg(e)}
       />
       <div className={styles.info}>
         <div className={styles.title}>{name}</div>

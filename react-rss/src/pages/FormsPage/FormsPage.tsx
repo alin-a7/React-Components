@@ -16,17 +16,17 @@ export interface ICard {
   agreement: boolean
 }
 
-const FormsPage = ()=> {
+const FormsPage = () => {
   const [cardArray, setCardArray] = useState<ICard[]>([])
 
-    return (
-      <Layout>
-        <div className={styles.wrapper}>
-          <Form setCardArray={setCardArray}/>
-          <CardsList cardArray={cardArray}/>
-        </div>
-      </Layout>
-    )
+  return (
+    <Layout>
+      <div className={styles.wrapper}>
+        <Form setCardArray={setCardArray} />
+        <CardsList cardArray={cardArray} />
+      </div>
+    </Layout>
+  )
 }
 
 export default FormsPage

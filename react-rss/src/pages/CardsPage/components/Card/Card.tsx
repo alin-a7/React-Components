@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import { errorImg } from '../../utils'
 import { Character } from '../../hooks'
 
 import styles from './Card.module.scss'
@@ -20,7 +19,6 @@ const Card: FC<CardProps> = ({ id, name, image, getCharacter }) => {
           src={image}
           alt={name}
           className={styles.image}
-          onError={(e) => errorImg(e)}
         />
         <div className={styles.title}>{name}</div>
       </div>

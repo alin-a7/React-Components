@@ -1,6 +1,8 @@
+import { FC } from 'react'
+
 import Layout from '../../components/Layout'
 
-const AboutPage = () => {
+const AboutPage: FC = () => {
   return (
     <Layout>
       <div>About</div>

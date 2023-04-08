@@ -9,7 +9,7 @@ describe('Renders main page correctly', () => {
     render(
       <BrowserRouter>
         <Routes>
-          <Route path="/cards" element={<CardsPage title='Cards'/>} />
+          <Route path="/cards" element={<CardsPage/>} />
         </Routes>
       </BrowserRouter>,
     )

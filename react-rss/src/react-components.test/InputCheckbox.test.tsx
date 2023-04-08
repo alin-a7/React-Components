@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import Form from '../pages/FormsPage/components/Form/Form'
 

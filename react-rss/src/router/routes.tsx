@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 
 import { PATHS } from './paths'
 import Page404 from '../pages/404Page'
@@ -8,7 +8,7 @@ import FormsPage from '../pages/FormsPage'
 
 interface Routes {
   path: string
-  component: typeof React.Component
+  component: FC
 }
 
 export const routes: Routes[] = [
