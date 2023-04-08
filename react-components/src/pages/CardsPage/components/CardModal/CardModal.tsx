@@ -20,8 +20,8 @@ const CardModal: FC<CardModalProps> = ({
   close,
 }) => {
   return (
-    <div className={styles.card}>
-      <CancelIcon className={styles.cancel} onClick={() => close()} />
+    <div className={styles.card} data-testid="card-modal">
+      <CancelIcon className={styles.cancel} onClick={close} />
       <img
         src={image}
         alt={name}
