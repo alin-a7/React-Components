@@ -4,17 +4,24 @@ import React from 'react'
 import CardsList from '../pages/FormsPage/components/CardsList'
 import Card from '../pages/CardsPage/components/Card'
 
-import { allProducts } from '../constants/allProducts'
+import { allCharacters } from '../constants/allCharacters'
 
 describe('CardList', () => {
   it('render list on the CardsPage', () => {
     class CardList extends React.Component {
       render() {
-        return allProducts.map((item) => <Card key={item.id} {...item} />)
+        return allCharacters.map((item) => (
+          <Card
+            key={item.id}
+            {...item}
+            // eslint-disable-next-line
+            getCharacter={() => new Promise((_) => null)}
+          />
+        ))
       }
     }
     render(<CardList />)
-    expect(screen.getAllByTestId('card').length).toEqual(20)
+    expect(screen.getAllByTestId('card').length).toEqual(2)
   })
   it('render list on the FormPage', () => {
     const cardArray = [
