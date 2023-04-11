@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 
 import Modal from '../../../../components/Modal'
-import { useModal } from '../../../../hooks'
+import { useModal } from '../../../../hooks/useModal'
 import { ICard } from '../../FormsPage'
 
 import InputCheckbox from './components/InputCheckbox'

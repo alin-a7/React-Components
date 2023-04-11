@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useModal } from '../../../hooks'
+import { useModal } from '../../../hooks/useModal'
 
 import { BASE_URL, getURL } from '../utils'
 
