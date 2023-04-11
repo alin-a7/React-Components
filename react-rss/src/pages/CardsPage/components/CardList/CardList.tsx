@@ -4,22 +4,20 @@ import { useAppSelector } from '../../../../hooks/redux'
 import Card from '../Card'
 
 import styles from './CardList.module.scss'
+import { characterApi } from '../../../../services/CharacterService'
 
-interface CardListProps {
-  getCharacter: (id: number) => Promise<void>
-}
+const CardList: FC = () => {
+  const { name } = useAppSelector((store) => store.characters)
 
-const CardList: FC<CardListProps> = ({  getCharacter }) => {
-  const { loading, characters } = useAppSelector(
-    (store) => store.characters,
-  )
+  const { isLoading, data } = characterApi.useFetchAllCharactersQuery(name)
+  const characters = data?.results
 
-  return loading ? (
+  return isLoading ? (
     <div className={styles.notFound}>Loading...</div>
   ) : characters?.length ? (
     <div className={styles.cardWrapper}>
       {characters.map((item) => (
-        <Card key={item.id} {...item} getCharacter={getCharacter} />
+        <Card key={item.id} {...item} />
       ))}
     </div>
   ) : (

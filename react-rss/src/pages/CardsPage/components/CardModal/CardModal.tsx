@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
 import { ReactComponent as CancelIcon } from '../../../../assets/cancel.svg'
-import { Character } from '../../hooks'
 
 import styles from './CardModal.module.scss'
+import { Character } from '../../../../store/types/characterTypes'
 
 interface CardModalProps extends Character {
   close: () => void

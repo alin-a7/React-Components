@@ -27,36 +27,7 @@ export interface CharacterState {
   name: string
 }
 
-export enum CharacterActionTypes {
-  FETCH_CHARACTERS = 'FETCH_CHARACTERS',
-  FETCH_SELECT_CHARACTER = 'FETCH_SELECT_CHARACTER',
-  FETCH_CHARACTERS_SUCCESS = 'FETCH_CHARACTERS_SUCCESS',
-  FETCH_CHARACTERS_ERROR = 'FETCH_CHARACTERS_ERROR',
-  SET_CHARACTER_NAME = 'SET_CHARACTER_NAME',
-}
 
-export interface FetchCharactersAction {
-  type: CharacterActionTypes.FETCH_CHARACTERS
-}
-export interface FetchCharactersSaccessAction {
-//   type: CharacterActionTypes.FETCH_CHARACTERS_SUCCESS
-  payload: Character[]
-}
-export interface FetchSelectCharacterAction {
-//   type: CharacterActionTypes.FETCH_SELECT_CHARACTER
-  payload: Character
-}
-export interface FetchCharactersErrorAction {
-//   type: CharacterActionTypes.FETCH_CHARACTERS_ERROR
-  payload: string
-}
 export interface SetCharacterNameAction {
-//   type: CharacterActionTypes.SET_CHARACTER_NAME
   payload: string
 }
-export type CharacterAction =
-  | FetchCharactersAction
-  | FetchCharactersSaccessAction
-  | FetchCharactersErrorAction
-  | SetCharacterNameAction
-  | FetchSelectCharacterAction
