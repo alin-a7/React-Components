@@ -1,25 +1,21 @@
 import axios from 'axios'
-import { Dispatch } from 'redux'
 
-import { BASE_URL } from '../../pages/CardsPage/utils'
+import { getURL } from '../../pages/CardsPage/utils'
 
-import { CharacterAction, CharacterActionTypes } from '../types/characterTypes'
+import { AppDispatch } from '../../store/store'
+import { characterSlice } from '../reducers/characterSlice'
 
-
-export const fetchCharacters = () => {
-  return async (dispatch: Dispatch<CharacterAction>) => {
+export const fetchCharacters =
+  (name = '') =>
+  async (dispatch: AppDispatch) => {
     try {
-      dispatch({ type: CharacterActionTypes.FETCH_CHARACTERS })
-      const response = await axios.get(BASE_URL)
-      dispatch({
-        type: CharacterActionTypes.FETCH_CHARACTERS_SUCCESS,
-        payload: response.data.results,
-      })
+      dispatch(characterSlice.actions.fetchCharacters())
+      const response = await axios.get(getURL(name))
+      dispatch(
+        characterSlice.actions.fetchCharactersSucces(response.data.results),
+      )
     } catch {
-      dispatch({
-        type: CharacterActionTypes.FETCH_CHARACTERS_ERROR,
-        payload: 'Download error, check your internet connection',
-      })
+      dispatch(characterSlice.actions.fetchCharactersError('No cards found...'))
     }
   }
-}
+

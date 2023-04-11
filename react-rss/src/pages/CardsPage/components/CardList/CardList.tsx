@@ -1,22 +1,24 @@
 import { FC } from 'react'
 
-import { Character } from '../../hooks'
+import { useAppSelector } from '../../../../hooks/redux'
 import Card from '../Card'
 
 import styles from './CardList.module.scss'
 
 interface CardListProps {
-  allPerson: Character[]
-  isLoading: boolean
   getCharacter: (id: number) => Promise<void>
 }
 
-const CardList: FC<CardListProps> = ({ allPerson, isLoading, getCharacter }) => {
-  return isLoading ? (
+const CardList: FC<CardListProps> = ({  getCharacter }) => {
+  const { loading, characters } = useAppSelector(
+    (store) => store.characters,
+  )
+
+  return loading ? (
     <div className={styles.notFound}>Loading...</div>
-  ) : allPerson?.length ? (
+  ) : characters?.length ? (
     <div className={styles.cardWrapper}>
-      {allPerson.map((item: Character) => (
+      {characters.map((item) => (
         <Card key={item.id} {...item} getCharacter={getCharacter} />
       ))}
     </div>

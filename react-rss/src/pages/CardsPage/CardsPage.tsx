@@ -1,46 +1,38 @@
-import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { useEffect } from 'react'
+
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { fetchCharacters } from '../../store/action-creators/characters'
 
 import Layout from '../../components/Layout'
 import Modal from '../../components/Modal'
 
-import { getSelectCharacterInfo, useCardsPage } from './hooks'
+import { getSelectCharacterInfo } from './hooks'
 import InputSearch from './components/InputSearch'
 import CardModal from './components/CardModal'
 
 import styles from './CardsPage.module.scss'
 import CardList from './components/CardList'
-import { useAction } from '../../hooks/useAction'
-import { useEffect } from 'react'
 
 const CardsPage = () => {
-  // const { error, isLoading, searchValue, searchCharacter, allPerson } =
-  //   useCardsPage()
-
   const { isVisible, closeModal, selectCharacter, getCharacter } =
     getSelectCharacterInfo()
 
-  const { loading, error, characters } = useTypedSelector(
-    (store) => store.characters,
-  )
+  const { error, name } = useAppSelector((store) => store.characters)
 
-  const { fetchCharacters } = useAction()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    fetchCharacters()
-  }, [])
+    dispatch(fetchCharacters(name))
+  }, [name])
 
   return (
     <Layout>
-      {/* <InputSearch value={searchValue} searchCharacter={searchCharacter} /> */}
+      <InputSearch />
 
       {error ? (
         <div className={styles.notFound}>{error}</div>
       ) : (
-        <CardList
-          allPerson={characters}
-          isLoading={loading}
-          getCharacter={getCharacter}
-        />
+        <CardList getCharacter={getCharacter} />
       )}
 
       {isVisible && (
