@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 
-import Menu from '../Menu'
+import Header from '../Header'
 
 import styles from './Layout.module.scss'
 
@@ -11,7 +11,7 @@ type LayotProps = {
 const Layout: FC<LayotProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
-      <Menu />
+      <Header />
       <div className={styles.childrenBlock}>{children}</div>
     </div>
   )

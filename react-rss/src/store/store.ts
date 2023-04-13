@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 
-import characterReducer from './reducers/characterSlice'
 import { characterApi } from '../services/CharacterService'
+
+import characterReducer from './reducers/characterSlice'
+import formReducer from './reducers/formSlice'
 
 export const rootReducer = combineReducers({
   characters: characterReducer,
+  form: formReducer,
   [characterApi.reducerPath]: characterApi.reducer,
 })
 

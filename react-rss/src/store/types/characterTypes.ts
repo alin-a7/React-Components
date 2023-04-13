@@ -16,7 +16,3 @@ export interface Character {
 export interface CharacterState {
   characterName: string
 }
-
-export interface SetCharacterNameAction {
-  payload: string
-}

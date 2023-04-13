@@ -5,9 +5,9 @@ import { PATHS } from '../../router/paths'
 
 import { NAVIGATION_MENU } from './constants'
 
-import styles from './Menu.module.scss'
+import styles from './Header.module.scss'
 
-const Menu: FC = () => {
+const Header: FC = () => {
   const currentPage = window.location.pathname.slice(1)
 
   return (
@@ -30,4 +30,4 @@ const Menu: FC = () => {
     </div>
   )
 }
-export default Menu
+export default Header

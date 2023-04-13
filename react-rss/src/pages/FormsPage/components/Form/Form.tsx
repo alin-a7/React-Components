@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 
 import Modal from '../../../../components/Modal'
 import { useModal } from '../../../../hooks/useModal'
-import { ICard } from '../../FormsPage'
 
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'
@@ -14,10 +13,8 @@ import InputText from './components/InputText'
 import { getImage } from './utils'
 
 import styles from './Form.module.scss'
-
-interface FormProps {
-  setCardArray: Dispatch<SetStateAction<ICard[]>>
-}
+import { useAppDispatch } from '../../../../hooks/redux'
+import { formSlice } from '../../../../store/reducers/formSlice'
 
 export interface FormState {
   text: string
@@ -28,7 +25,7 @@ export interface FormState {
   agreement: boolean
 }
 
-const Form: FC<FormProps> = ({ setCardArray }) => {
+const Form: FC = () => {
   const { isVisible, open: openModal, close: closeModal } = useModal()
   const {
     reset,
@@ -39,9 +36,12 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
     mode: 'onBlur',
   })
 
+  const dispatch = useAppDispatch()
+  const { addCard } = formSlice.actions
+
   const formSubmit = (data: FormState) => {
     const card = { ...data, file: getImage(data.file) }
-    setCardArray((prev) => [...prev, card])
+    dispatch(addCard(card))
     openModal()
     reset()
   }
@@ -62,8 +62,13 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       <button type="submit" className={styles.button}>
         Create card!
       </button>
-      {isVisible &&  (
-        <Modal close={closeModal} content={<div className={styles.succes}>Form completed successfully!</div>}/>
+      {isVisible && (
+        <Modal
+          close={closeModal}
+          content={
+            <div className={styles.succes}>Form completed successfully!</div>
+          }
+        />
       )}
     </form>
   )

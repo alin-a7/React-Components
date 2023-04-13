@@ -1,17 +1,15 @@
 import { FC } from 'react'
 
-import { ICard } from '../../FormsPage'
+import { useAppSelector } from '../../../../hooks/redux'
 
 import styles from './CardsList.module.scss'
 
-interface CardsListProps {
-  cardArray: ICard[]
-}
-
-const CardsList: FC<CardsListProps> = ({ cardArray }) => {
+const CardsList: FC = () => {
+  const { formData } = useAppSelector((store) => store.form)
+  
   return (
     <div className={styles.cardWrapper}>
-      {cardArray.map(({ text, date, language, gender, file }, index) => (
+      {formData.map(({ text, date, language, gender, file }, index) => (
         <div key={index} className={styles.card} data-testid="form-card">
           <img className={styles.image} src={file} alt={text} />
           <div className={styles.name}>Name: {text}</div>
