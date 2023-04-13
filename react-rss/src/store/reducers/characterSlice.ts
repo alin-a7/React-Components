@@ -1,16 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {
-  Character,
-  CharacterState,
-  SetCharacterNameAction,
-} from '../types/characterTypes'
+import { CharacterState, SetCharacterNameAction } from '../types/characterTypes'
 
 const initialSatate: CharacterState = {
-  characters: [],
-  selectCharacter: {} as Character,
-  loading: false,
-  error: null,
-  name: '',
+  characterName: '',
 }
 
 export const characterSlice = createSlice({
@@ -18,7 +10,7 @@ export const characterSlice = createSlice({
   initialState: initialSatate,
   reducers: {
     setCharacterName(state, action: SetCharacterNameAction) {
-      state.name = action.payload
+      state.characterName = action.payload
     },
   },
 })

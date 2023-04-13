@@ -8,13 +8,11 @@ import CardModal from '../CardModal'
 
 import styles from './Card.module.scss'
 
-
 const Card: FC<Character> = ({ id, name, image }) => {
   const { isVisible, open: openModal, close: closeModal } = useModal()
 
-  const { data: selectCharacter } = characterApi.useFetchSelectCharacterQuery(
-    id as number,
-  )
+  const { data: selectCharacter } =
+    characterApi.useFetchSelectCharacterQuery(id)
 
   return (
     <>

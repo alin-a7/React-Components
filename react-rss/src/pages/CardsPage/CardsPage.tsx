@@ -4,31 +4,23 @@ import Layout from '../../components/Layout'
 import { characterApi } from '../../services/CharacterService'
 
 import InputSearch from './components/InputSearch'
-
-import styles from './CardsPage.module.scss'
 import CardList from './components/CardList'
 
-const CardsPage = () => {
-  const { name } = useAppSelector((store) => store.characters)
+import styles from './CardsPage.module.scss'
 
-  const { error } = characterApi.useFetchAllCharactersQuery(name)
+const CardsPage = () => {
+  const { characterName } = useAppSelector((store) => store.characters)
+
+  const { error } = characterApi.useFetchAllCharactersQuery(characterName)
 
   return (
     <Layout>
       <InputSearch />
-
       {error ? (
         <div className={styles.notFound}>No cards found...</div>
       ) : (
-        <CardList  />
+        <CardList />
       )}
-
-      {/* {isVisible && (
-        <Modal
-          close={closeModal}
-          content={<CardModal {...selectCharacter} close={closeModal} />}
-        />
-      )} */}
     </Layout>
   )
 }

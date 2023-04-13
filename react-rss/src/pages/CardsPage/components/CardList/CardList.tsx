@@ -1,18 +1,18 @@
 import { FC } from 'react'
 
+import { characterApi } from '../../../../services/CharacterService'
 import { useAppSelector } from '../../../../hooks/redux'
 import Card from '../Card'
 
 import styles from './CardList.module.scss'
-import { characterApi } from '../../../../services/CharacterService'
 
 const CardList: FC = () => {
-  const { name } = useAppSelector((store) => store.characters)
+  const { characterName } = useAppSelector((store) => store.characters)
 
-  const { isLoading, data } = characterApi.useFetchAllCharactersQuery(name)
+  const { isFetching, data } = characterApi.useFetchAllCharactersQuery(characterName)
   const characters = data?.results
 
-  return isLoading ? (
+  return isFetching ? (
     <div className={styles.notFound}>Loading...</div>
   ) : characters?.length ? (
     <div className={styles.cardWrapper}>
