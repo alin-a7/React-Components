@@ -1,5 +1,8 @@
 import { render } from '@testing-library/react'
+import { Provider } from 'react-redux'
+
 import Form from '../pages/FormsPage/components/Form'
+import { setupStore } from '../store/store'
 
 describe('InputFile component', () => {
   afterEach(() => {
@@ -7,8 +10,12 @@ describe('InputFile component', () => {
   })
 
   it('display an error message', () => {
+    const store = setupStore()
+
     const { getByTestId } = render(
-      <Form setCardArray={() => null} />,
+      <Provider store={store}>
+        <Form />
+      </Provider>,
     )
     const input = getByTestId('file') as HTMLInputElement
     expect(input).toBeInTheDocument()

@@ -5,6 +5,10 @@
   width: 100%;
   padding: 10px 25px;
 
+  position: sticky;
+  top: -1px;
+  z-index: 100;
+
   background-color: rgb(23, 14, 36);
 }
 
