@@ -24,7 +24,7 @@
 
 .logo {
   width: 200px;
-  height: 80px;
+  height: 70px;
 
   &:hover {
     scale: 1.05;
@@ -35,7 +35,7 @@
   align-items: center;
   color: white;
   display: flex;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   gap: 10px;
   padding: 10px;
@@ -43,5 +43,6 @@
 
   &:hover {
     color: #f0e14a;
+    scale: 1.05;
   }
 }
