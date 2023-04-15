@@ -1,8 +1,10 @@
-import { Dispatch, FC, SetStateAction } from 'react'
+import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
 import Modal from '../../../../components/Modal'
 import { useModal } from '../../../../hooks/useModal'
+import { useAppDispatch } from '../../../../hooks/redux'
+import { addCard } from '../../../../store/reducers/formSlice'
 
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'
@@ -13,8 +15,6 @@ import InputText from './components/InputText'
 import { getImage } from './utils'
 
 import styles from './Form.module.scss'
-import { useAppDispatch } from '../../../../hooks/redux'
-import { formSlice } from '../../../../store/reducers/formSlice'
 
 export interface FormState {
   text: string
@@ -37,7 +37,6 @@ const Form: FC = () => {
   })
 
   const dispatch = useAppDispatch()
-  const { addCard } = formSlice.actions
 
   const formSubmit = (data: FormState) => {
     const card = { ...data, file: getImage(data.file) }
@@ -60,7 +59,7 @@ const Form: FC = () => {
       <InputCheckbox register={register} error={errors?.agreement} />
 
       <button type="submit" className={styles.button}>
-        Create card!
+        Create character!
       </button>
       {isVisible && (
         <Modal

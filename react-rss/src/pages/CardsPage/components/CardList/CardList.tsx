@@ -9,14 +9,14 @@ import styles from './CardList.module.scss'
 const CardList: FC = () => {
   const { characterName } = useAppSelector((store) => store.characters)
 
-  const { isFetching, data } = characterApi.useFetchAllCharactersQuery(characterName)
+  const { isFetching, error, data } = characterApi.useFetchAllCharactersQuery(characterName)
   const characters = data?.results
 
   return isFetching ? (
     <div className={styles.notFound}>Loading...</div>
-  ) : characters?.length ? (
+  ) : !error ? (
     <div className={styles.cardWrapper}>
-      {characters.map((item) => (
+      {characters?.map((item) => (
         <Card key={item.id} {...item} />
       ))}
     </div>

@@ -5,7 +5,7 @@ const initialSatate: CharacterState = {
   characterName: '',
 }
 
-export const characterSlice = createSlice({
+const characterSlice = createSlice({
   name: 'character',
   initialState: initialSatate,
   reducers: {
@@ -15,4 +15,5 @@ export const characterSlice = createSlice({
   },
 })
 
+export const { setCharacterName } = characterSlice.actions
 export default characterSlice.reducer

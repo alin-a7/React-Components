@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux'
-import { characterSlice } from '../../../../store/reducers/characterSlice'
+import { setCharacterName } from '../../../../store/reducers/characterSlice'
 
 import styles from './InputSearch.module.scss'
 
@@ -14,12 +14,11 @@ const InputSearch: FC = () => {
   const { register, handleSubmit, setValue } = useForm<FormState>()
 
   const dispatch = useAppDispatch()
-  const { setCharacterName } = characterSlice.actions
   const { characterName } = useAppSelector((store) => store.characters)
 
   useEffect(() => {
     setValue('characterName', characterName)
-  }, [setValue])
+  }, [setValue, characterName])
 
   const submit = (data: FormState) => {
     dispatch(setCharacterName(data.characterName))

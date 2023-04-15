@@ -5,7 +5,7 @@ const initialSatate: FormDataState = {
   formData: [],
 }
 
-export const formSlice = createSlice({
+const formSlice = createSlice({
   name: 'formData',
   initialState: initialSatate,
   reducers: {
@@ -15,4 +15,5 @@ export const formSlice = createSlice({
   },
 })
 
+export const { addCard } = formSlice.actions
 export default formSlice.reducer

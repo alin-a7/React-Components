@@ -20,13 +20,15 @@ const Header: FC = () => {
             className={styles.logo}
           />
         </NavLink>
-        {NAVIGATION_MENU.map(({ to, label }, index) => (
-          <NavLink key={index} to={to} className={styles.menuItem}>
-            {label}
-          </NavLink>
-        ))}
+        <div className={styles.navLink}>
+          {NAVIGATION_MENU.map(({ to, label }, index) => (
+            <NavLink key={index} to={to} className={styles.menuItem}>
+              {label}
+            </NavLink>
+          ))}
+        </div>
+        <div>Current page: {currentPage}</div>
       </nav>
-      <div>Current page: {currentPage}</div>
     </div>
   )
 }
