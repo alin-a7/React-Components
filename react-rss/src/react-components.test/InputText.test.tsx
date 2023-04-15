@@ -18,7 +18,7 @@ describe('InputText component', () => {
       </Provider>,
     )
     const input = getByPlaceholderText(
-      'Enter your first and last name',
+      "Enter the character's first and last name",
     ) as HTMLInputElement
     fireEvent.change(input, { target: { value: 'testValue' } })
     expect(input.value).toBe('testValue')

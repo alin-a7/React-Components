@@ -27,7 +27,7 @@ describe('Page Cards', () => {
       </Provider>,
     )
     expect(
-      await getByText('No cards found...'),
+      await getByText('Search!'),
     ).toBeInTheDocument()
   })
 })
