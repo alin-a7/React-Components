@@ -1,0 +1,17 @@
+.cardWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.notFound {
+  font-weight: 900;
+  font-size: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
