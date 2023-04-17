@@ -8,7 +8,6 @@ class Router extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate replace to="/cards" />} />
           {routes.map(({ path, component: Component }, index) => (
             <Route key={index} path={path} element={<Component />} />
           ))}
