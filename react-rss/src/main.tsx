@@ -7,13 +7,18 @@ import { setupStore } from './store/store'
 import App from './App'
 
 import './index.scss'
+import FormsPage from './pages/FormsPage/FormsPage'
+import { BrowserRouter } from 'react-router-dom'
 
 const store = setupStore()
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.hydrateRoot(
+  document.getElementById('root') as HTMLElement,
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 )

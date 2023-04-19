@@ -16,5 +16,9 @@
     "resolveJsonModule": true,
     "types": ["vitest/globals", "vite-plugin-svgr/client"]
   },
-  "include": ["./src/**/*", "styled.d.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", "./src/**/*", "styled.d.ts"],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "esm": true
+  }
 }

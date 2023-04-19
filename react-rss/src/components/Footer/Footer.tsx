@@ -6,7 +6,7 @@ import styles from './Footer.module.scss'
 
 const Footer: FC = () => {
   return (
-    <div className={styles.container}>
+    <footer className={styles.container}>
       <div>© 2023</div>
       <a href="https://rs.school/" target="_blank" rel="noreferrer">
         <RSLogo className={styles.logo} />
@@ -14,7 +14,7 @@ const Footer: FC = () => {
       <a href="https://github.com/alin-a7" target="_blank" rel="noreferrer">
         Designer: Alina M
       </a>
-    </div>
+    </footer>
   )
 }
 export default Footer
