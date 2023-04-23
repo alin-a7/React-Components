@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { characterApi } from '../../../../services/CharacterService'
+import { characterApi } from '../../../../store/services/CharacterService'
 import { useAppSelector } from '../../../../hooks/redux'
 import Card from '../Card'
 

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import Layout from '../../components/Layout'
-import { ReactComponent as Logo } from '../../assets/logo.svg'
+import Layout from '@/components/Layout'
+import { ReactComponent as Logo } from '@/assets/logo.svg'
 
 import styles from './AboutPage.module.scss'
 

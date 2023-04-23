@@ -12,11 +12,9 @@ type LayotProps = {
 const Layout: FC<LayotProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
-      <>
-        <Header />
-        <main className={styles.childrenBlock}>{children}</main>
-        <Footer />
-      </>
+      <Header />
+      <main className={styles.childrenBlock}>{children}</main>
+      <Footer />
     </div>
   )
 }

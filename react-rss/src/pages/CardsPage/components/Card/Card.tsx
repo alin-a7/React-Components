@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { characterApi } from '../../../../services/CharacterService'
-import { Character } from '../../../../store/types/characterTypes'
-import { useModal } from '../../../../hooks/useModal'
-import Modal from '../../../../components/Modal'
+import { characterApi } from '@/store/services/CharacterService'
+import { Character } from '@/store/types/characterTypes'
+import { useModal } from '@/hooks/useModal'
+import Modal from '@/components/Modal'
 import CardModal from '../CardModal'
 
 import styles from './Card.module.scss'

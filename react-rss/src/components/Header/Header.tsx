@@ -9,8 +9,8 @@ import { NAVIGATION_MENU } from './constants'
 import styles from './Header.module.scss'
 
 const Header: FC = () => {
-  const {pathname} = useLocation()
-  
+  const { pathname } = useLocation()
+  const currentPage = pathname.slice(1) || 'cards'
 
   return (
     <header className={styles.container}>
@@ -25,7 +25,7 @@ const Header: FC = () => {
             </NavLink>
           ))}
         </div>
-        <div>Current page: {pathname}</div>
+        <div>Current page: {currentPage}</div>
       </nav>
     </header>
   )

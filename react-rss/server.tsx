@@ -1,4 +1,3 @@
-import { readFile } from 'fs/promises'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -7,7 +6,7 @@ import { createServer as createViteServer } from 'vite'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const PORT = 8000
+const PORT = 3000
 
 async function createServer() {
   const app = express()
@@ -34,11 +33,13 @@ async function createServer() {
         onShellReady() {
           res.write(html[0])
           pipe(res)
+          res.write(html[1])
+
         },
-        onAllReady() {
-          res.write(html[0] + html[1])
-          res.end()
-        },
+        // onAllReady() {
+        //   res.write(html[0] + html[1])
+        //   res.end()
+        // },
       })
     } catch (e) {
       if (e instanceof Error) {

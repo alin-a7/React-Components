@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Character } from '../store/types/characterTypes'
+import { Character } from '../types/characterTypes'
 
 interface FetchData {
     results: Character[]

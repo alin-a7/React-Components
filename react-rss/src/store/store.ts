@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 
-import { characterApi } from '../services/CharacterService'
+import { characterApi } from './services/CharacterService'
 
 import characterReducer from './reducers/characterSlice'
 import formReducer from './reducers/formSlice'
