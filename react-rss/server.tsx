@@ -34,12 +34,7 @@ async function createServer() {
           res.write(html[0])
           pipe(res)
           res.write(html[1])
-
         },
-        // onAllReady() {
-        //   res.write(html[0] + html[1])
-        //   res.end()
-        // },
       })
     } catch (e) {
       if (e instanceof Error) {
@@ -50,7 +45,7 @@ async function createServer() {
   })
 
   app.listen(PORT, () =>
-    console.log('Server started at http://localhost:' + PORT),
+    console.log('Server started at http://localhost:' + PORT), // eslint-disable-line
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToPipeableStream, renderToString } from 'react-dom/server';
+import { renderToPipeableStream } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from 'react-redux';
 
