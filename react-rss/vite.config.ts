@@ -5,10 +5,18 @@ import { defineConfig } from 'vite'
 import * as path from 'path'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
+import istanbul from 'vite-plugin-istanbul'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr(),
+    istanbul({
+      cypress: true,
+      requireEnv: false,
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -25,7 +33,7 @@ export default defineConfig({
     coverage: {
       provider: 'c8',
       reporter: ['text'],
-      all: true
+      all: true,
     },
   },
 })
