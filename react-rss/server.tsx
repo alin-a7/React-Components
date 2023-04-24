@@ -44,8 +44,9 @@ async function createServer() {
     }
   })
 
-  app.listen(PORT, () =>
-    console.log('Server started at http://localhost:' + PORT), // eslint-disable-line
+  app.listen(
+    PORT,
+    () => console.log('Server started at http://localhost:' + PORT), // eslint-disable-line
   )
 }
 

@@ -17,6 +17,8 @@
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
       "components/*": ["src/components/*"],
+      "hooks/*": ["src/hooks/*"],
+      "store/*": ["src/store/*"],
       "assets/*": ["src/assets/*"]
     },
     "types": ["vitest/globals", "vite-plugin-svgr/client"]

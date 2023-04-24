@@ -12,10 +12,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      components: `${path.resolve(__dirname, './src/components')}`,
-      hooks: `${path.resolve(__dirname, './src/hooks')}`,
-      store: `${path.resolve(__dirname, './src/store')}`,
-      assets: `${path.resolve(__dirname, './src/assets')}`,
+      components: path.resolve(__dirname, './src/components'),
+      hooks: path.resolve(__dirname, './src/hooks'),
+      store: path.resolve(__dirname, './src/store'),
+      assets: path.resolve(__dirname, './src/assets'),
     },
   },
   test: {
@@ -23,8 +23,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/tests/setup.ts',
     coverage: {
-      all: true,
+      provider: 'c8',
       reporter: ['text'],
+      all: true
     },
   },
 })
