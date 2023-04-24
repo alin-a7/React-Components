@@ -23,9 +23,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/tests/setup.ts',
     coverage: {
-      provider: 'c8',
+      all: true,
       reporter: ['text'],
-      all: true
     },
   },
 })
