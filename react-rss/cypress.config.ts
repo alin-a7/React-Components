@@ -1,9 +1,10 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress'
+import coverage from '@cypress/code-coverage/task'
 
 export default defineConfig({
   env: {
     codeCoverage: {
-        exclude: "cypress/**/*.*",
+      exclude: 'cypress/**/*.*',
     },
   },
   e2e: {
@@ -14,13 +15,12 @@ export default defineConfig({
   },
   component: {
     devServer: {
-      framework: "react",
-      bundler: "vite",
+      framework: 'react',
+      bundler: 'vite',
     },
     setupNodeEvents(on, config) {
-      require("@cypress/code-coverage/task")(on, config);
-
-      return config;
+      coverage(on, config)
+      return config
+    },
   },
-  },
-});
+})
