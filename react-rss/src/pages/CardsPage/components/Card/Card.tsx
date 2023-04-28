@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { characterApi } from '@/store/services/CharacterService'
+import { useFetchSelectCharacterQuery } from '@/store/services/CharacterService'
 import { Character } from '@/store/types/characterTypes'
 import { useModal } from '@/hooks/useModal'
 import Modal from '@/components/Modal'
@@ -11,8 +11,7 @@ import styles from './Card.module.scss'
 const Card: FC<Character> = ({ id, name, image }) => {
   const { isVisible, open: openModal, close: closeModal } = useModal()
 
-  const { data: selectCharacter } =
-    characterApi.useFetchSelectCharacterQuery(id)
+  const { data: selectCharacter } = useFetchSelectCharacterQuery(id)
 
   return (
     <>

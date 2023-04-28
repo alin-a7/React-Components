@@ -24,3 +24,11 @@ export const characterApi = createApi({
     }),
   }),
 })
+
+export const {
+  useFetchAllCharactersQuery,
+  useFetchSelectCharacterQuery,
+  util: { getRunningQueriesThunk },
+} = characterApi;
+
+export const { fetchAllCharacters } = characterApi.endpoints;

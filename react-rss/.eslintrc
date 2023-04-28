@@ -4,6 +4,7 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
+    "plugin:cypress/recommended",
     "plugin:react-hooks/recommended"
   ],
   "rules": {
@@ -58,7 +59,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.test.ts", "**/*.test.tsx", "**/*.test.js"],
+      "files": ["**/*.test.ts", "**/*.cy.ts", "**/*.test.tsx", "**/*.test.js"],
       "env": {
         "jest": true
       }

@@ -6,7 +6,7 @@ import { createServer as createViteServer } from 'vite'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const PORT = 3000
+const PORT = 8000
 
 async function createServer() {
   const app = express()
