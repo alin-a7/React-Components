@@ -9,7 +9,7 @@ export default defineConfig({
     },
   },
   e2e: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://localhost:8000',
     setupNodeEvents(on, config) {
       coverage(on, config)
       return config
