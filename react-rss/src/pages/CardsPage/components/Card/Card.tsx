@@ -1,27 +1,34 @@
 import { FC } from 'react'
 
-import { Character } from '../../hooks'
+import { characterApi } from '../../../../services/CharacterService'
+import { Character } from '../../../../store/types/characterTypes'
+import { useModal } from '../../../../hooks/useModal'
+import Modal from '../../../../components/Modal'
+import CardModal from '../CardModal'
 
 import styles from './Card.module.scss'
 
-interface CardProps extends Character {
-  getCharacter: (id: number) => Promise<void>
-}
+const Card: FC<Character> = ({ id, name, image }) => {
+  const { isVisible, open: openModal, close: closeModal } = useModal()
 
-const Card: FC<CardProps> = ({ id, name, image, getCharacter }) => {
+  const { data: selectCharacter } =
+    characterApi.useFetchSelectCharacterQuery(id)
+
   return (
-      <div
-        className={styles.card}
-        data-testid="card"
-        onClick={() => getCharacter(id as number)}
-      >
-        <img
-          src={image}
-          alt={name}
-          className={styles.image}
-        />
+    <>
+      <div className={styles.card} data-testid="card" onClick={openModal}>
+        <img src={image} alt={name} className={styles.image} />
         <div className={styles.title}>{name}</div>
       </div>
+      {isVisible && (
+        <Modal
+          close={closeModal}
+          content={
+            <CardModal {...(selectCharacter as Character)} close={closeModal} />
+          }
+        />
+      )}
+    </>
   )
 }
 

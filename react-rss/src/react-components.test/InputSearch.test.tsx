@@ -1,6 +1,8 @@
+import { Provider } from 'react-redux'
 import { render, fireEvent } from '@testing-library/react'
 
 import InputSearch from '../pages/CardsPage/components/InputSearch'
+import { setupStore } from '../store/store'
 
 describe('InputSearch component', () => {
   afterEach(() => {
@@ -8,8 +10,12 @@ describe('InputSearch component', () => {
   })
 
   it('must be changed input value', () => {
+    const store = setupStore()
+
     const { getByPlaceholderText } = render(
-      <InputSearch searchCharacter={() => null} />,
+      <Provider store={store}>
+        <InputSearch />
+      </Provider>,
     )
     const input = getByPlaceholderText('Search characters!') as HTMLInputElement
     fireEvent.change(input, { target: { value: 'testValue' } })

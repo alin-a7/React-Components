@@ -1,26 +1,27 @@
 import { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux'
+import { setCharacterName } from '../../../../store/reducers/characterSlice'
+
 import styles from './InputSearch.module.scss'
 
-interface Search {
-  searchCharacter: (name: string) => void
-  value?: string
-}
-
 interface FormState {
-  name: string
+  characterName: string
 }
 
-const InputSearch: FC<Search> = ({ searchCharacter, value }) => {
+const InputSearch: FC = () => {
   const { register, handleSubmit, setValue } = useForm<FormState>()
 
+  const dispatch = useAppDispatch()
+  const { characterName } = useAppSelector((store) => store.characters)
+
   useEffect(() => {
-    setValue('name', value || '')
-  }, [value, setValue])
+    setValue('characterName', characterName)
+  }, [setValue, characterName])
 
   const submit = (data: FormState) => {
-    searchCharacter(data.name)
+    dispatch(setCharacterName(data.characterName))
   }
 
   return (
@@ -30,7 +31,7 @@ const InputSearch: FC<Search> = ({ searchCharacter, value }) => {
         type="search"
         className={styles.searchInput}
         placeholder="Search characters!"
-        {...register('name')}
+        {...register('characterName')}
       />
       <button type="submit" className={styles.searcButton}>
         Search!

@@ -5,9 +5,9 @@ import { PATHS } from '../../router/paths'
 
 import { NAVIGATION_MENU } from './constants'
 
-import styles from './Menu.module.scss'
+import styles from './Header.module.scss'
 
-const Menu: FC = () => {
+const Header: FC = () => {
   const currentPage = window.location.pathname.slice(1)
 
   return (
@@ -20,14 +20,16 @@ const Menu: FC = () => {
             className={styles.logo}
           />
         </NavLink>
-        {NAVIGATION_MENU.map(({ to, label }, index) => (
-          <NavLink key={index} to={to} className={styles.menuItem}>
-            {label}
-          </NavLink>
-        ))}
+        <div className={styles.navLink}>
+          {NAVIGATION_MENU.map(({ to, label }, index) => (
+            <NavLink key={index} to={to} className={styles.menuItem}>
+              {label}
+            </NavLink>
+          ))}
+        </div>
+        <div>Current page: {currentPage}</div>
       </nav>
-      <div>Current page: {currentPage}</div>
     </div>
   )
 }
-export default Menu
+export default Header

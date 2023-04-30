@@ -1,23 +1,30 @@
 .container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   padding: 10px 25px;
+
+  position: sticky;
+  top: -1px;
+  z-index: 100;
 
   background-color: rgb(23, 14, 36);
 }
 
 .navigation {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLink {
+  display: flex;
   gap: 20px;
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
-  background-color: white;
-  border-radius: 50%;
+  width: 200px;
+  height: 70px;
 
   &:hover {
     scale: 1.05;
@@ -28,9 +35,14 @@
   align-items: center;
   color: white;
   display: flex;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   gap: 10px;
   padding: 10px;
   text-transform: capitalize;
+
+  &:hover {
+    color: #f0e14a;
+    scale: 1.05;
+  }
 }

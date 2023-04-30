@@ -1,9 +1,10 @@
-import { Dispatch, FC, SetStateAction } from 'react'
+import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
 import Modal from '../../../../components/Modal'
-import { useModal } from '../../../../hooks'
-import { ICard } from '../../FormsPage'
+import { useModal } from '../../../../hooks/useModal'
+import { useAppDispatch } from '../../../../hooks/redux'
+import { addCard } from '../../../../store/reducers/formSlice'
 
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'
@@ -15,10 +16,6 @@ import { getImage } from './utils'
 
 import styles from './Form.module.scss'
 
-interface FormProps {
-  setCardArray: Dispatch<SetStateAction<ICard[]>>
-}
-
 export interface FormState {
   text: string
   date: string
@@ -28,7 +25,7 @@ export interface FormState {
   agreement: boolean
 }
 
-const Form: FC<FormProps> = ({ setCardArray }) => {
+const Form: FC = () => {
   const { isVisible, open: openModal, close: closeModal } = useModal()
   const {
     reset,
@@ -39,9 +36,11 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
     mode: 'onBlur',
   })
 
+  const dispatch = useAppDispatch()
+
   const formSubmit = (data: FormState) => {
     const card = { ...data, file: getImage(data.file) }
-    setCardArray((prev) => [...prev, card])
+    dispatch(addCard(card))
     openModal()
     reset()
   }
@@ -60,10 +59,15 @@ const Form: FC<FormProps> = ({ setCardArray }) => {
       <InputCheckbox register={register} error={errors?.agreement} />
 
       <button type="submit" className={styles.button}>
-        Create card!
+        Create character!
       </button>
-      {isVisible &&  (
-        <Modal close={closeModal} content={<div className={styles.succes}>Form completed successfully!</div>}/>
+      {isVisible && (
+        <Modal
+          close={closeModal}
+          content={
+            <div className={styles.succes}>Form completed successfully!</div>
+          }
+        />
       )}
     </form>
   )

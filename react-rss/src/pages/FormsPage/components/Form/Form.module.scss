@@ -4,6 +4,9 @@
   align-items: center;
   gap: 15px;
 
+  position: sticky;
+  top: 120px;
+
   width: 30%;
   min-width: 360px;
   height: 100%;
@@ -107,7 +110,7 @@
   border: 2px solid white;
   border-radius: 10px;
 
-  width: 50%;
+  width: 70%;
 }
 
 .succes {

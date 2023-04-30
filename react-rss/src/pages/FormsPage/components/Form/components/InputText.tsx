@@ -17,7 +17,7 @@ const InputText: FC<InputsProps> = ({ error, register }) => {
         })}
         type="text"
         className={styles.textInput}
-        placeholder="Enter your first and last name"
+        placeholder="Enter the character's first and last name"
       />
       {error && <div className={styles.error}>{error.message}</div>}
     </>

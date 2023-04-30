@@ -64,3 +64,22 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.active {
+  color: #f0e14a;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgb(23, 14, 36);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f3faf7;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px rgb(23, 14, 36);
+
+  &:hover {
+    background-color: #a6a4b7;
+  }
+}

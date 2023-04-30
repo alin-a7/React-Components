@@ -1,48 +1,35 @@
 import { render, screen } from '@testing-library/react'
+import { Provider } from 'react-redux'
 import React from 'react'
 
 import CardsList from '../pages/FormsPage/components/CardsList'
 import Card from '../pages/CardsPage/components/Card'
+import { setupStore } from '../store/store'
 
 import { allCharacters } from '../constants/allCharacters'
 
 describe('CardList', () => {
+  const store = setupStore()
+
   it('render list on the CardsPage', () => {
     class CardList extends React.Component {
       render() {
-        return allCharacters.map((item) => (
-          <Card
-            key={item.id}
-            {...item}
-            // eslint-disable-next-line
-            getCharacter={() => new Promise((_) => null)}
-          />
-        ))
+        return allCharacters.map((item) => <Card key={item.id} {...item} />)
       }
     }
-    render(<CardList />)
+    render(
+      <Provider store={store}>
+        <CardList />
+      </Provider>,
+    )
     expect(screen.getAllByTestId('card').length).toEqual(2)
   })
   it('render list on the FormPage', () => {
-    const cardArray = [
-      {
-        text: 'text',
-        date: 'date',
-        language: 'ru',
-        gender: 'male',
-        file: 'img',
-        agreement: true,
-      },
-      {
-        text: 'text',
-        date: 'date',
-        language: 'ru',
-        gender: 'male',
-        file: 'img',
-        agreement: true,
-      },
-    ]
-    render(<CardsList cardArray={cardArray} />)
-    expect(screen.getAllByTestId('form-card').length).toEqual(2)
+    render(
+      <Provider store={store}>
+        <CardsList />
+      </Provider>,
+    )
+    expect(screen.getByTestId('form-cards')).toBeInTheDocument()
   })
 })

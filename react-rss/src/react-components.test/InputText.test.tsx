@@ -1,6 +1,8 @@
 import { render, fireEvent } from '@testing-library/react'
+import { Provider } from 'react-redux'
 
 import Form from '../pages/FormsPage/components/Form'
+import { setupStore } from '../store/store'
 
 describe('InputText component', () => {
   afterEach(() => {
@@ -8,12 +10,17 @@ describe('InputText component', () => {
   })
 
   it('must be changed input value', () => {
-    const { getByPlaceholderText } = render(<Form setCardArray={() => null} />)
+    const store = setupStore()
+
+    const { getByPlaceholderText } = render(
+      <Provider store={store}>
+        <Form />
+      </Provider>,
+    )
     const input = getByPlaceholderText(
-      'Enter your first and last name',
+      "Enter the character's first and last name",
     ) as HTMLInputElement
     fireEvent.change(input, { target: { value: 'testValue' } })
     expect(input.value).toBe('testValue')
   })
-
 })
