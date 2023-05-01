@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import Modal from '../../../../components/Modal'
-import { useModal } from '../../../../hooks/useModal'
-import { useAppDispatch } from '../../../../hooks/redux'
-import { addCard } from '../../../../store/reducers/formSlice'
+import Modal from '@/components/Modal'
+import { useModal } from '@/hooks/useModal'
+import { useAppDispatch } from '@/hooks/redux'
+import { addCard } from '@/store/reducers/formSlice'
 
 import InputCheckbox from './components/InputCheckbox'
 import InputSelect from './components/InputSelect'

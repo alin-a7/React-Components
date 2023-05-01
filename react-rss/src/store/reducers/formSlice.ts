@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { FormDataState, IFormCard } from '../types/formTypes'
 
-const initialSatate: FormDataState = {
+export interface IFormCard {
+  text: string
+  date: string
+  language: string
+  gender: string
+  file: string
+  agreement: boolean
+}
+
+const initialSatate: { formData: IFormCard[] } = {
   formData: [],
 }
 

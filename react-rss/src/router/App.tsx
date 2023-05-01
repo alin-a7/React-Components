@@ -1,3 +1,5 @@
+import { Route, Routes } from 'react-router-dom'
+
 import { FC } from 'react'
 
 import { PATHS } from './paths'
@@ -29,3 +31,16 @@ export const routes: Routes[] = [
     component: Page404,
   },
 ]
+
+
+function App() {
+  return (
+    <Routes>
+      {routes.map(({ path, component: Component }, index) => (
+        <Route key={index} path={path} element={<Component />} />
+      ))}
+    </Routes>
+  )
+}
+
+export default App

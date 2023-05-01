@@ -13,8 +13,8 @@ const Layout: FC<LayotProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header />
-      <div className={styles.childrenBlock}>{children}</div>
-      <Footer/>
+      <main className={styles.childrenBlock}>{children}</main>
+      <Footer />
     </div>
   )
 }

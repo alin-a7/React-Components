@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { ReactComponent as Search } from '../../../../assets/search.svg'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux'
 import { setCharacterName } from '../../../../store/reducers/characterSlice'
 
@@ -26,7 +27,7 @@ const InputSearch: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(submit)} className={styles.wrapper}>
-      <img src="../../src/assets/search.svg" className={styles.searchIcon} />
+      <Search className={styles.searchIcon} />
       <input
         type="search"
         className={styles.searchInput}

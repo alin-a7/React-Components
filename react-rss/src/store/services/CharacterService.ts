@@ -1,9 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Character } from '../store/types/characterTypes'
 
 interface FetchData {
     results: Character[]
 }
+
+export interface Character {
+  id: number
+  name: string
+  species: string
+  gender: string
+  origin?: {
+    name: string
+  }
+  location: {
+    name: string
+  }
+  image: string
+  episode: string[]
+}
+
 
 export const characterApi = createApi({
   reducerPath: 'characterApi',
@@ -24,3 +39,11 @@ export const characterApi = createApi({
     }),
   }),
 })
+
+export const {
+  useFetchAllCharactersQuery,
+  useFetchSelectCharacterQuery,
+  util: { getRunningQueriesThunk },
+} = characterApi;
+
+export const { fetchAllCharacters } = characterApi.endpoints;

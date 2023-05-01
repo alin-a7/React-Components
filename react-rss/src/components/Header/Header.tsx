@@ -1,24 +1,22 @@
 import { FC } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import { PATHS } from '../../router/paths'
+import { ReactComponent as Logo } from '../../assets/logo.svg'
 
 import { NAVIGATION_MENU } from './constants'
 
 import styles from './Header.module.scss'
 
 const Header: FC = () => {
-  const currentPage = window.location.pathname.slice(1)
+  const { pathname } = useLocation()
+  const currentPage = pathname.slice(1) || 'cards'
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <nav className={styles.navigation}>
         <NavLink to={PATHS.CARDS}>
-          <img
-            src="../../src/assets/logo.svg"
-            alt="logo"
-            className={styles.logo}
-          />
+          <Logo className={styles.logo} />
         </NavLink>
         <div className={styles.navLink}>
           {NAVIGATION_MENU.map(({ to, label }, index) => (
@@ -29,7 +27,7 @@ const Header: FC = () => {
         </div>
         <div>Current page: {currentPage}</div>
       </nav>
-    </div>
+    </header>
   )
 }
 export default Header

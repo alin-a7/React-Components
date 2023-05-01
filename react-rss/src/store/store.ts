@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { PreloadedState, configureStore } from '@reduxjs/toolkit'
 
-import { characterApi } from '../services/CharacterService'
+import { characterApi } from './services/CharacterService'
 
 import characterReducer from './reducers/characterSlice'
 import formReducer from './reducers/formSlice'
@@ -12,9 +12,10 @@ export const rootReducer = combineReducers({
   [characterApi.reducerPath]: characterApi.reducer,
 })
 
-export const setupStore = () => {
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
+    preloadedState: preloadedState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(characterApi.middleware),
   })

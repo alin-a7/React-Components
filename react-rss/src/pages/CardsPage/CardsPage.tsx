@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout'
+import Layout from '@/components/Layout'
 
 import InputSearch from './components/InputSearch'
 import CardList from './components/CardList'
