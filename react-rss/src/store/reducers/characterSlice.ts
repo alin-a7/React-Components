@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { CharacterState } from '../types/characterTypes'
 
+export interface CharacterState {
+  characterName: string
+  }
+  
 const initialSatate: CharacterState = {
   characterName: '',
 }

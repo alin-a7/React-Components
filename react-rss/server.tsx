@@ -28,12 +28,24 @@ async function createServer() {
       )
       template = await vite.transformIndexHtml(url, template)
       const html = template.split(`<!--ssr-body-->`)
+      res.write(html[0])
       const { render } = await vite.ssrLoadModule('/src/entry-server.tsx')
-      const { pipe } = await render(url, {
+      const { pipe, store } = await render(url, {
         onShellReady() {
-          res.write(html[0])
-          pipe(res)
-          res.write(html[1])
+          pipe.pipe(res)
+        },
+        onAllReady() {
+          const preloadedState = store.getState()
+
+          html[1] = html[1].replace(
+            `<!--preloaded-state-->`,
+            `<script>
+             window.__PRELOADED_STATE__ = ${JSON.stringify(
+               preloadedState,
+             ).replace(/</g, '\\u003c')}
+          </script>`,
+          )
+          res.end(html[1])
         },
       })
     } catch (e) {
